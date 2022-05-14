@@ -19,7 +19,7 @@ export default function Stadium({ navigation }) {
         </View>
 
         <View style={styles.shapestyle}>
-          <TouchableOpacity style={styles.buttonstyle} onPress={() => {alert(locationURL(URL))}}>
+          <TouchableOpacity style={styles.buttonstyle} onPress={() => {locationURL(URL)}}>
             <Text style={styles.buttontext}>Location</Text>
           </TouchableOpacity>
         </View>

@@ -1,10 +1,15 @@
-import { TouchableOpacity, ScrollView, StyleSheet, Text, View, Image } from 'react-native'
-import { React, useState } from "react";
+import {  TouchableOpacity, ScrollView, StyleSheet, Text, View, Image } from 'react-native'
+import { React, useState , useEffect } from "react";
 import Logo from '../assets/OIP.jpg'
+import { getFStadium } from '../db/Stadium/Football'
 
 export default function Football({ navigation }) {
-  const [value, setValue] = useState("");
-
+  const [stadium, setStadium] = useState([]);
+  useEffect(() => {
+    getFStadium().then((data) => {
+      setStadium(data);
+    });
+}, []);
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -13,62 +18,11 @@ export default function Football({ navigation }) {
             <Image source={Logo} style={styles.image} />
             <View style={styles.cont}>
               <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('Stadium') }}>
-                <Text style={styles.buttontext}>Stadium 1</Text>
+                <Text style={styles.buttontext}>{stadium.map((item, index) => { return (<Text> {item.name} </Text>) })}</Text>
                 <Text style={styles.buttontext}>For more info press here</Text>
               </TouchableOpacity>
             </View>
           </View>
-
-          <View style={styles.itemstyle} onPress={() => { navigation.navigate('Stadium') }}>
-            <Image source={Logo} style={styles.image} />
-            <View style={styles.cont}>
-              <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('Stadium') }}>
-                <Text style={styles.buttontext}>Stadium 2</Text>
-                <Text style={styles.buttontext}>For more info press here</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <View style={styles.itemstyle} onPress={() => { navigation.navigate('Stadium') }}>
-            <Image source={Logo} style={styles.image} />
-            <View style={styles.cont}>
-              <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('Stadium') }}>
-                <Text style={styles.buttontext}>Stadium 3</Text>
-                <Text style={styles.buttontext}>For more info press here</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <View style={styles.itemstyle} onPress={() => { navigation.navigate('Stadium') }}>
-            <Image source={Logo} style={styles.image} />
-            <View style={styles.cont}>
-              <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('Stadium') }}>
-                <Text style={styles.buttontext}>Stadium 4</Text>
-                <Text style={styles.buttontext}>For more info press here</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <View style={styles.itemstyle} onPress={() => { navigation.navigate('Stadium') }}>
-            <Image source={Logo} style={styles.image} />
-            <View style={styles.cont}>
-              <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('Stadium') }}>
-                <Text style={styles.buttontext}>Stadium 5</Text>
-                <Text style={styles.buttontext}>For more info press here</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <View style={styles.itemstyle} onPress={() => { navigation.navigate('Stadium') }}>
-            <Image source={Logo} style={styles.image} />
-            <View style={styles.cont}>
-              <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('Stadium') }}>
-                <Text style={styles.buttontext}>Stadium 6</Text>
-                <Text style={styles.buttontext}>For more info press here</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-
         </View>
       </View>
     </ScrollView>
