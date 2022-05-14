@@ -14,7 +14,6 @@ import Football from "./Pages/Football";
 import Basketball from "./Pages/Basketball";
 import Tennis from "./Pages/Tennis";
 import Profile from "./Pages/Profile";
-import Stadium from "./Pages/Stadium";
 import Payment from "./Pages/Payment";
 
 const NotUsrStck = createNativeStackNavigator();
@@ -71,12 +70,6 @@ function User({ user, email }) {
                 }} />
 
                 <UserStack.Screen name="Profile" component={Profile} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
-                    headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
-                }} />
-
-                <UserStack.Screen name="Stadium" component={Stadium} options={{
                     headerStyle: { backgroundColor: "#3c8d0d", },
                     headerTintColor: '#FFF',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
