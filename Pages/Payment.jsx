@@ -1,6 +1,5 @@
 import { TouchableOpacity,StyleSheet, Text, View, Image, Button, TextInput } from 'react-native'
-import React, { useState } from 'react'
-
+import React, { useState } from 'react' 
 import Logo from '../assets/2511582.jpg'
 
 export default function Payment() {
@@ -11,7 +10,7 @@ export default function Payment() {
   
   const Handler = () =>{
     if (name != '' && cardnumber.toString() != '' && cvv.toString() != '' && date.toString() != '') {
-      alert("Done! Check your email for confirmation message")
+      change().then(alert("Done! Check your email for confirmation message"))
     } else {
       alert("please fill the information of yout card")
     }

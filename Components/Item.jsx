@@ -21,7 +21,7 @@ export default function item({ e , navigation} , key ) {
     return (
         <View key={key} style={styles.container}>
             <View style={styles.component}>
-                <Image source={e.pic} style={styles.image} />
+                <Image source={{uri : e.pic}} style={styles.image} />
             </View>
             <View style={styles.details}>
                 <Text style={styles.text}> Name : {e.name} </Text>
