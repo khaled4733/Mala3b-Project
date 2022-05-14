@@ -5,7 +5,7 @@ import Logo from '../assets/OIP.jpg'
 export default function item({ e , navigation} , key ) {
 
     function handle(){
-        if (e.available) {
+        if (e.available == 'true') {
             navigation.navigate('Payment')
         } else {
             alert("this stadium in unavaliable")

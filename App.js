@@ -15,6 +15,10 @@ import Basketball from "./Pages/Basketball";
 import Tennis from "./Pages/Tennis";
 import Profile from "./Pages/Profile";
 import Payment from "./Pages/Payment";
+import AdminArea from "./Pages/AdminArea";
+import FootBallEdit from "./Pages/FootballEdit";
+import BasketballEdit from "./Pages/BasketballEdit";
+import TennisEdit from "./Pages/TennisEdit"
 
 const NotUsrStck = createNativeStackNavigator();
 
@@ -76,6 +80,30 @@ function User({ user, email }) {
                 }} />
 
                 <UserStack.Screen name="Payment" component={Payment} options={{
+                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerTintColor: '#FFF',
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                }} />
+
+                <UserStack.Screen name="AdminArea" component={AdminArea} options={{
+                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerTintColor: '#FFF',
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                }} />
+
+                <UserStack.Screen name="FootBallEdit" component={FootBallEdit} options={{
+                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerTintColor: '#FFF',
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                }} />
+
+                <UserStack.Screen name="BasketballEdit" component={BasketballEdit} options={{
+                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerTintColor: '#FFF',
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                }} />
+
+                <UserStack.Screen name="TennisEdit" component={TennisEdit} options={{
                     headerStyle: { backgroundColor: "#3c8d0d", },
                     headerTintColor: '#FFF',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }

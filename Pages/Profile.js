@@ -17,11 +17,12 @@ export default function Profile({ navigation, route }) {
     return (
         <View style={styles.container}>
             <Text>email is : {user.email}</Text>
-            <View>
                 <TouchableOpacity style={styles.buttonstyle} onPress={handleSignOut}>
                     <Text style={styles.buttontext}>LogOut</Text>
                 </TouchableOpacity>
-            </View>
+                <TouchableOpacity style={styles.buttonstyle} onPress={()=>{navigation.navigate('AdminArea')}}>
+                    <Text style={styles.buttontext}>admin</Text>
+                </TouchableOpacity>
         </View>
 
     )
@@ -31,15 +32,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingHorizontal: 10
     },
     buttonstyle: {
         backgroundColor: '#022b3a',
         width: '100%',
-        padding: 15,
+        height: 30,
         borderRadius: 10,
         alignItems: 'center',
-
+        marginVertical: 15
     },
     buttontext: {
         color: 'rgb(255, 255, 255)',
