@@ -9,6 +9,7 @@ const Register = ({ navigation }) => {
   const [displayName, setdisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
+  const role = 0
   const [error, setError] = useState("");
 
   const handleRegister = () => {
@@ -18,7 +19,7 @@ const Register = ({ navigation }) => {
         login(email, password).then(
             () => {
               console.log('login completed');
-              getUserUId().then((id) => addUser({id: id, email, password}));
+              getUserUId().then((id) => addUser({id: id, email, password,role}));
             }
         )
       })

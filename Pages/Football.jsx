@@ -15,7 +15,7 @@ export default function Football({ navigation }) {
       <Text style={styles.title}> Pick your stadium </Text>
       <ScrollView contentContainerStyle={styles.tasks}>
         {stadium.map((item, index) => {
-          return (<Item e={item} key={index} />);
+          return (<Item e={item} key={index} navigation={navigation}/>);
         })}
       </ScrollView>
     </View>

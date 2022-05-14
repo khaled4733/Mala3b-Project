@@ -1,23 +1,38 @@
-import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native'
+import {  Linking ,TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import Logo from '../assets/OIP.jpg'
 
-export default function item({ e } , key) {
+export default function item({ e , navigation} , key ) {
+
+    function handle(){
+        if (e.available) {
+            navigation.navigate('Payment')
+        } else {
+            alert("this stadium in unavaliable")
+        }
+    }
+
+    function location(){
+        Linking.openURL(e.link)
+                        .then()
+                        .catch((err) => console.error('An error occurred', err))
+    }
+
     return (
         <View key={key} style={styles.container}>
             <View style={styles.component}>
-                <Image source={Logo} style={styles.image} />
+                <Image source={e.pic} style={styles.image} />
             </View>
             <View style={styles.details}>
                 <Text style={styles.text}> Name : {e.name} </Text>
                 <Text style={styles.text}> Price : {e.price} </Text>
-                <Text style={styles.text}> Date : 15/5 8pm to 9pm</Text>
+                <Text style={styles.text}> Date : {e.date}</Text>
             </View>
             <View style={styles.buttonstyle}>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={handle}>
                     <Text style={styles.text}> Book </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={location}>
                     <Text style={styles.text}> Location </Text>
                 </TouchableOpacity>
             </View>

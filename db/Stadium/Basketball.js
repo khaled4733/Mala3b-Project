@@ -1,11 +1,11 @@
 import { db } from "../Config";
 import { addDoc, collection, getDocs, getFirestore, setDoc, doc, query, where } from "firebase/firestore";
 
-async function addFStadium() {
+async function addBStadium() {
 }
 
-async function getFStadium() {
-    const stadiumsCol = collection(db, "football");
+async function getBStadium() {
+    const stadiumsCol = collection(db, "basketball");
     const stadiumsSnapshot = await getDocs(stadiumsCol);
     const stadiumList = stadiumsSnapshot.docs.map((doc) => {
         return { id: doc.id, ...doc.data() };
@@ -14,4 +14,4 @@ async function getFStadium() {
     return stadiumList;
 }
 
-export { addFStadium, getFStadium };
+export { addBStadium, getBStadium };
