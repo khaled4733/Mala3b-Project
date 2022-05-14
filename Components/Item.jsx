@@ -1,16 +1,26 @@
-import { TouchableOpacity, View, Text, StyleSheet, Button } from 'react-native'
+import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
+import Logo from '../assets/OIP.jpg'
 
-export default function item({ e }) {
+export default function item({ e } , key) {
     return (
-        <View style={styles.container}>
-            <View style={styles.itemstyle}>
-
+        <View key={key} style={styles.container}>
+            <View style={styles.component}>
+                <Image source={Logo} style={styles.image} />
             </View>
-            <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('Stadium') }}>
-                <Text style={styles.buttontext}>{stadium.map((item, index) => { return (<Text> {item.name} </Text>) })}</Text>
-                <Text style={styles.buttontext}>For more info press here</Text>
-            </TouchableOpacity>
+            <View style={styles.details}>
+                <Text style={styles.text}> Name : {e.name} </Text>
+                <Text style={styles.text}> Price : {e.price} </Text>
+                <Text style={styles.text}> Date : 15/5 8pm to 9pm</Text>
+            </View>
+            <View style={styles.buttonstyle}>
+                <TouchableOpacity style={styles.button}>
+                    <Text style={styles.text}> Book </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button}>
+                    <Text style={styles.text}> Location </Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
@@ -18,16 +28,37 @@ export default function item({ e }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        backgroundColor: '#FFF',
-        paddingHorizontal: 15
-    },
-    itemstyle: {
+        paddingHorizontal: 10
+      },
+      component: {
+        paddingBottom: 10,
+      },
+      button: {
+        backgroundColor: 'green',
+        width: '40%',
+        height: 40,
+        padding: 5
+      },
+      buttonstyle: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "center",
+        paddingVertical: 10
+      },
+      text: {
+        fontSize: 18,
+        color: "white",
+        textAlign: "center",
+      },
+      details: {
+        backgroundColor: 'green',
+        width: '100%',
+        height: 80,
+      },
+      image: {
+        borderRadius: 10,
         maxWidth: '100%',
         height: 100,
-        borderRadius: 10,
-        marginBottom: 100,
-        borderColor: '#000000'
-    },
+      },
 })
 
