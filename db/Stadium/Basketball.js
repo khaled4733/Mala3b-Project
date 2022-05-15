@@ -1,7 +1,22 @@
 import { db } from "../Config";
-import { addDoc, collection, getDocs, getFirestore, setDoc, doc, query, where } from "firebase/firestore";
-
-async function addBStadium() {
+import {
+    getDocs,
+    doc,
+    setDoc,
+    addDoc,
+    deleteDoc,
+    collection,
+    query,
+    where,
+    onSnapshot,
+  } from "firebase/firestore";
+async function addBStadium(BasketBall) {
+    try {
+        const docRef = await addDoc(collection(db, "basketball"), BasketBall);
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
 }
 
 async function getBStadium() {
@@ -14,4 +29,13 @@ async function getBStadium() {
     return stadiumList;
 }
 
-export { addBStadium, getBStadium };
+async function deleteBStadium(id) {
+    try {
+      await deleteDoc(doc(db, "basketball", id));
+      console.log("Document deleted with ID: ", id);
+    } catch (error) {
+      console.error("Error deleting document: ", error);
+    }
+  }
+
+export { addBStadium, getBStadium, deleteBStadium };

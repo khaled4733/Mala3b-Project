@@ -14,6 +14,14 @@ export default function Profile({ navigation, route }) {
             .catch(error => alert(error.message))
         console.log("signout successful");
     }
+
+    const handleadminarea = () => {
+        if (user.role == 1) {
+            navigation.navigate('AdminArea')
+        } else {
+            alert("you dont have permmision to enter the area")
+        }
+    }
     return (
         <View style={styles.container}>
             <Text>email is : {user.email}</Text>
