@@ -4,9 +4,8 @@ import { signout } from '../db/Auth'
 
 
 
-export default function Profile({ navigation, route }) {
-    const { user } = route.params;
-    console.log(user);
+export default function Profile({ navigation,  }) {
+
 
     const handleSignOut = () => {
         signout()
@@ -24,7 +23,6 @@ export default function Profile({ navigation, route }) {
     }
     return (
         <View style={styles.container}>
-            <Text>email is : {user.email}</Text>
                 <TouchableOpacity style={styles.buttonstyle} onPress={handleSignOut}>
                     <Text style={styles.buttontext}>LogOut</Text>
                 </TouchableOpacity>
@@ -41,19 +39,21 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal: 10
+        paddingHorizontal: 40
     },
     buttonstyle: {
         backgroundColor: '#022b3a',
         width: '100%',
-        height: 30,
+        height: 60,
         borderRadius: 10,
         alignItems: 'center',
-        marginVertical: 15
+        justifyContent: 'center',
+        marginVertical: 30
     },
     buttontext: {
         color: 'rgb(255, 255, 255)',
         fontWeight: '700',
         fontSize: 16,
+        
     },
 })

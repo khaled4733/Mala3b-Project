@@ -130,7 +130,7 @@ function BottomTab({ user }) {
                 ),
             }} />
 
-            <Tab.Screen name={"Profile"} initialParams={{ user }} component={Profile} options={{
+            <Tab.Screen name={"Profile"} component={Profile} options={{
                 headerStyle: {
                     backgroundColor: '#3c8d0d',
                 },

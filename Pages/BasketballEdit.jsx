@@ -1,4 +1,4 @@
-import { TouchableOpacity, StyleSheet, Text, View, TextInput } from 'react-native'
+import { TouchableOpacity, StyleSheet, Text, View, TextInput, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { addBStadium, deleteBStadium } from "../db/Stadium/Basketball";
 
@@ -23,7 +23,7 @@ export default function BasketballEdit({ navigation }) {
             available: available,
         };
 
-        addBStadium(Basketball);
+        addBStadium(Basketball).then(alert("done!"));
         console.log("football", Basketball);
     }
 
@@ -33,95 +33,97 @@ export default function BasketballEdit({ navigation }) {
     //   }
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>add Stadium</Text>
-            <View>
-                <TextInput
-                    style={styles.textinput}
-                    placeholder="id"
-                    value={id}
-                    onChangeText={(text) => setid(text)}
-                    keyboardType="default"
-                />
+        <ScrollView>
+            <View style={styles.container}>
+                <Text style={styles.title}>add Stadium</Text>
+                <View>
+                    <TextInput
+                        style={styles.textinput}
+                        placeholder="id"
+                        value={id}
+                        onChangeText={(text) => setid(text)}
+                        keyboardType="default"
+                    />
 
-                <TextInput
-                    style={styles.textinput}
-                    placeholder="name"
-                    value={name}
-                    onChangeText={(text) => setname(text)}
-                    keyboardType="default"
-                />
+                    <TextInput
+                        style={styles.textinput}
+                        placeholder="name"
+                        value={name}
+                        onChangeText={(text) => setname(text)}
+                        keyboardType="default"
+                    />
 
-                <TextInput
-                    style={styles.textinput}
-                    placeholder="picture link"
-                    value={pic}
-                    onChangeText={(text) => setpic(text)}
-                    keyboardType="default"
-                />
+                    <TextInput
+                        style={styles.textinput}
+                        placeholder="picture link"
+                        value={pic}
+                        onChangeText={(text) => setpic(text)}
+                        keyboardType="default"
+                    />
 
-                <TextInput
-                    style={styles.textinput}
-                    placeholder="location link"
-                    value={link}
-                    onChangeText={(text) => setlink(text)}
-                    keyboardType="default"
-                />
+                    <TextInput
+                        style={styles.textinput}
+                        placeholder="location link"
+                        value={link}
+                        onChangeText={(text) => setlink(text)}
+                        keyboardType="default"
+                    />
 
-                <TextInput
-                    style={styles.textinput}
-                    placeholder="date"
-                    value={date}
-                    onChangeText={(text) => setdate(text)}
-                    keyboardType="default"
-                />
+                    <TextInput
+                        style={styles.textinput}
+                        placeholder="date"
+                        value={date}
+                        onChangeText={(text) => setdate(text)}
+                        keyboardType="default"
+                    />
 
-                <TextInput
-                    style={styles.textinput}
-                    placeholder="price"
-                    value={price}
-                    onChangeText={(text) => setprice(text)}
-                    keyboardType="default"
-                />
+                    <TextInput
+                        style={styles.textinput}
+                        placeholder="price"
+                        value={price}
+                        onChangeText={(text) => setprice(text)}
+                        keyboardType="default"
+                    />
 
-                <TextInput
-                    style={styles.textinput}
-                    placeholder="available"
-                    value={available}
-                    onChangeText={(text) => setavailable(text)}
-                    keyboardType="default"
-                />
+                    <TextInput
+                        style={styles.textinput}
+                        placeholder="available"
+                        value={available}
+                        onChangeText={(text) => setavailable(text)}
+                        keyboardType="default"
+                    />
+                </View>
+                <View style={styles.format}>
+                    <TouchableOpacity
+                        style={styles.buttonstyle}
+                        onPress={() => addbasketball()}
+                    >
+                        <Text style={styles.buttontext}>Add</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.line}></View>
+
+                <Text style={styles.title}>delete Stadium</Text>
+                <View>
+                    <TextInput
+                        style={styles.textinput}
+                        placeholder="enter id"
+                        value={id}
+                        onChangeText={(text) => setid(text)}
+                        keyboardType="default"
+                    />
+                </View>
+
+                <View style={styles.format}>
+                    <TouchableOpacity
+                        style={styles.buttonstyle}
+                        onPress={() => deleteBStadium(id)}
+                    >
+                        <Text style={styles.buttontext}>Delete</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <View style={styles.format}>
-                <TouchableOpacity
-                    style={styles.buttonstyle}
-                    onPress={() => addbasketball()}
-                >
-                    <Text style={styles.buttontext}>Add</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.line}></View>
-
-            <Text style={styles.title}>delete Stadium</Text>
-            <View>
-                <TextInput
-                    style={styles.textinput}
-                    placeholder="enter id"
-                    value={id}
-                    onChangeText={(text) => setid(text)}
-                    keyboardType="default"
-                />
-            </View>
-
-            <View style={styles.format}>
-                <TouchableOpacity
-                    style={styles.buttonstyle}
-                    onPress={() => deleteBStadium(id)}
-                >
-                    <Text style={styles.buttontext}>Delete</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
+        </ScrollView>
     );
 };
 
@@ -153,10 +155,9 @@ const styles = StyleSheet.create({
     },
     textinput: {
         height: 40,
-        color: 'rgb(255, 255, 255)',
+        color: "#000000",
         borderBottomColor: "#cae9ff",
         borderBottomWidth: 4,
-
     },
     format: {
         marginVertical: 20,
