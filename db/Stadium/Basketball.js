@@ -1,15 +1,4 @@
 import { db } from "../Config";
-import {
-    getDocs,
-    doc,
-    setDoc,
-    addDoc,
-    deleteDoc,
-    collection,
-    query,
-    where,
-    onSnapshot,
-  } from "firebase/firestore";
 async function addBStadium(BasketBall) {
     try {
         const docRef = await addDoc(collection(db, "basketball"), BasketBall);
@@ -18,6 +7,9 @@ async function addBStadium(BasketBall) {
         console.error("Error adding document: ", e);
       }
 }
+import {addDoc, collection, getDocs, getFirestore, setDoc, doc, query, where, deleteDoc} from "firebase/firestore";
+
+
 
 async function getBStadium() {
     const stadiumsCol = collection(db, "basketball");
@@ -28,6 +20,9 @@ async function getBStadium() {
     console.log(stadiumList);
     return stadiumList;
 }
+
+
+
 
 async function deleteBStadium(id) {
     try {

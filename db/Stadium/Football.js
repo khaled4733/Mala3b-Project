@@ -30,6 +30,8 @@ async function getFStadium() {
   return stadiumList;
 }
 
+
+
 async function deleteFStadium(id) {
   try {
     await deleteDoc(doc(db, "football", id));

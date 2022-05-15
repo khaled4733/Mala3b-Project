@@ -1,7 +1,7 @@
 import { TouchableOpacity, ScrollView, StyleSheet, Text, View, Image } from 'react-native'
 import { React, useState, useEffect } from "react";
 import Item from '../Components/Item'
-import { getFStadium } from '../db/Stadium/Football'
+import {getFStadium} from '../db/Stadium/Football'
 
 export default function Football({ navigation }) {
   const [stadium, setStadium] = useState([]);

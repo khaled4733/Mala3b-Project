@@ -1,16 +1,94 @@
 import { TouchableOpacity,StyleSheet, Text, View, Image, Button, TextInput } from 'react-native'
-import React, { useState } from 'react' 
-import Logo from '../assets/2511582.jpg'
+import React, { useState,useEffect } from 'react'
 
-export default function Payment() {
+import Logo from '../assets/2511582.jpg'
+import {getFStadium} from "../db/Stadium/Football";
+import {getUserUId} from "../db/Auth";
+import {addUsersToDocuments, updateFAvailable} from "../db/User";
+import {getBStadium} from "../db/Stadium/Basketball";
+import {getTStadium} from "../db/Stadium/Tennis";
+
+export default function Payment({navigation,route}) {
+  const {user} = route.params;
+  const currentUserId = user.uid;
   const [name, setName] = useState("");
   const [cardnumber, setCardNumber] = useState("");
   const [cvv, setCVV] = useState("");
   const [date, setDate] = useState("");
-  
+  const [Fstadium, setFStadium] = useState([]);
+  const [Bstadium, setBStadium] = useState([]);
+  const [Tstadium, setTStadium] = useState([]);
+
+
+  // console.log(user)
+
+// console.log(stadium);
+
+  useEffect(() => {
+     getFStadium().then((data) => {
+       setFStadium(data);
+    })
+  },[]);
+
+
+  useEffect(() => {
+    getBStadium().then((data) => {
+      setBStadium(data);
+    })
+  },[]);
+
+
+  useEffect(() => {
+    getTStadium().then((data) => {
+      setTStadium(data);
+    })
+  },[]);
+
+  //  ---------------------------
+  //add users to football
+  useEffect(() => {
+    for (let i = 0; i < Fstadium.length; i++) {
+      addUsersToDocuments("football", Fstadium[i].id,user)
+    }
+  },[]);
+
+  //add users to basket
+  useEffect(() => {
+    for (let i = 0; i < Bstadium.length; i++) {
+      addUsersToDocuments("basketball", Bstadium[i].id,user)
+    }
+  },[]);
+
+  //add users to tennis
+  useEffect(() => {
+    for (let i = 0; i < Tstadium.length; i++) {
+      addUsersToDocuments("tennis", Tstadium[i].id,user)
+    }
+  },[]);
+
+
+
+
   const Handler = () =>{
     if (name != '' && cardnumber.toString() != '' && cvv.toString() != '' && date.toString() != '') {
-      change().then(alert("Done! Check your email for confirmation message"))
+      for (let i = 0; i < Fstadium.length; i++) {
+        if(Fstadium[i].id === currentUserId){
+          updateFAvailable(currentUserId,Fstadium[i]).then(alert("Done! Check your email for confirmation message"))
+          }
+      }
+
+      for (let i = 0; i < Tstadium.length; i++) {
+        if(Tstadium[i].id === currentUserId){
+          updateFAvailable(currentUserId,Tstadium[i]).then(alert("Done! Check your email for confirmation message"))
+        }
+      }
+
+      for (let i = 0; i < Bstadium.length; i++) {
+        if(Bstadium[i].id === currentUserId){
+          updateFAvailable(currentUserId,Bstadium[i]).then(alert("Done! Check your email for confirmation message"))
+        }
+      }
+
     } else {
       alert("please fill the information of yout card")
     }

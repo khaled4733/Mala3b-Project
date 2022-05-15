@@ -1,11 +1,11 @@
-import {  Linking ,TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native'
+import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import Logo from '../assets/OIP.jpg'
+import {Linking} from "react-native-web";
 
 export default function item({ e , navigation} , key ) {
-
     function handle(){
-        if (e.available == 'true') {
+        if (e.available) {
             navigation.navigate('Payment')
         } else {
             alert("this stadium in unavaliable")

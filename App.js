@@ -79,7 +79,7 @@ function User({ user, email }) {
                     headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
                 }} />
 
-                <UserStack.Screen name="Payment" component={Payment} options={{
+                <UserStack.Screen name="Payment" component={Payment} initialParams={{user}} options={{
                     headerStyle: { backgroundColor: "#3c8d0d", },
                     headerTintColor: '#FFF',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
