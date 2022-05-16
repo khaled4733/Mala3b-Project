@@ -50,30 +50,15 @@ async function getUsers() {
     });
 }
 //                    F-> for "football"
- async function updateFAvailable(docId, tempDoc) {
+ async function updateFAvailable(tempDoc) {
      try {
-         console.log(tempDoc.date);
-         const docRef = doc(db, "football", docId);
-         console.log("entered updateFAvailable()")
-         // await deleteDoc(doc(db, "football", docId)); //not working
-
-         /*Delete Doc Herre*/
-          await deleteFStadium(docId,tempDoc); //not working, delete from db !!!!
-
-         //add new stadium with "available: false"
-         await setDoc(docRef, {
-             available: false,
-             date: tempDoc.date,
-             id: tempDoc.id,
-             name: tempDoc.name,
-             pic: tempDoc.pic,
-             price: tempDoc.price
-         }).then(console.log('available updated!'))
+         console.log(tempDoc);
+         await setDoc(doc(db, "football", tempDoc.id), tempDoc); //if document with "tempDoc.id" not found add it, else update it
      } catch (e) {
          console.error(e);
      }
- }
 
+}
 
 async function deleteFStadium(docId) {
     try {

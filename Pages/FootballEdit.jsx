@@ -15,7 +15,6 @@ const FootballEdit = ({ navigation }) => {
   const [link, setlink] = useState("");
   const [date, setdate] = useState("");
   const [price, setprice] = useState("");
-  const [available, setavailable] = useState("");
   // const [error, setError] = useState("");
 
   function addfootball() {
@@ -26,7 +25,6 @@ const FootballEdit = ({ navigation }) => {
       link: link,
       date: date,
       id: id,
-      available: available,
     };
 
     addFStadium(football).then(alert("done!"));
@@ -90,13 +88,6 @@ const FootballEdit = ({ navigation }) => {
             keyboardType="default"
           />
 
-          <TextInput
-            style={styles.textinput}
-            placeholder="available"
-            value={available}
-            onChangeText={(text) => setavailable(text)}
-            keyboardType="default"
-          />
         </View>
         <View style={styles.format}>
           <TouchableOpacity
@@ -124,6 +115,7 @@ const FootballEdit = ({ navigation }) => {
             style={styles.buttonstyle}
             onPress={() => deletefootball()}
           >
+
             <Text style={styles.buttontext}>Delete</Text>
           </TouchableOpacity>
         </View>
