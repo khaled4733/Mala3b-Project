@@ -1,4 +1,4 @@
-import { ScrollView, TouchableOpacity ,StyleSheet, Text, View, Image, Button } from 'react-native'
+import { ScrollView, TouchableOpacity ,StyleSheet, Text,TextInput, View, Image, Button } from 'react-native'
 import React from 'react'
 import { useEffect } from "react";
 

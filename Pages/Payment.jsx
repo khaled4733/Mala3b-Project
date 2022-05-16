@@ -2,9 +2,9 @@ import { TouchableOpacity,StyleSheet, Text, View, Image, Button, TextInput } fro
 import React, { useState,useEffect } from 'react'
 
 import Logo from '../assets/2511582.jpg'
-import {getFStadium} from "../db/Stadium/Football";
+import {deleteFStadium, getFStadium} from "../db/Stadium/Football";
 import {getUserUId} from "../db/Auth";
-import {addUsersToDocuments, updateFAvailable} from "../db/User";
+import {addUsersToDocuments, updateFAvailable,test} from "../db/User";
 import {getBStadium} from "../db/Stadium/Basketball";
 import {getTStadium} from "../db/Stadium/Tennis";
 
@@ -70,10 +70,15 @@ export default function Payment({navigation,route}) {
 
 
   const Handler = () =>{
+    // console.log("here in paymethod")
+
     if (name != '' && cardnumber.toString() != '' && cvv.toString() != '' && date.toString() != '') {
+      // console.log("data is valid and sizo of Fstadium.length=", Fstadium.length, ' and currentUserId', currentUserId)
       for (let i = 0; i < Fstadium.length; i++) {
+
+        // console.log("Fstadium[i].id=", Fstadium[i].id, ' i=', i)
         if(Fstadium[i].id === currentUserId){
-          updateFAvailable(currentUserId,Fstadium[i]).then(alert("Done! Check your email for confirmation message"))
+          updateFAvailable(Fstadium[i]).then(alert("Done! Check your email for confirmation message"))
           }
       }
 

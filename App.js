@@ -19,6 +19,7 @@ import AdminArea from "./Pages/AdminArea";
 import FootBallEdit from "./Pages/FootballEdit";
 import BasketballEdit from "./Pages/BasketballEdit";
 import TennisEdit from "./Pages/TennisEdit"
+import ValidationPage from "./Pages/ValidationPage"
 
 const NotUsrStck = createNativeStackNavigator();
 
@@ -104,6 +105,12 @@ function User({ user, email }) {
                 }} />
 
                 <UserStack.Screen name="TennisEdit" component={TennisEdit} options={{
+                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerTintColor: '#FFF',
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                }} />
+
+                <UserStack.Screen name="ValidationPage" component={ValidationPage} options={{
                     headerStyle: { backgroundColor: "#3c8d0d", },
                     headerTintColor: '#FFF',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }

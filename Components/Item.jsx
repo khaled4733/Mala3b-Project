@@ -4,12 +4,9 @@ import Logo from '../assets/OIP.jpg'
 import {Linking} from "react-native-web";
 
 export default function item({ e , navigation} , key ) {
-    function handle(){
-        if (e.available) {
-            navigation.navigate('Payment')
-        } else {
-            alert("this stadium in unavaliable")
-        }
+    function handle(){                          // name of stadium
+            navigation.navigate('ValidationPage', {name: e.name})
+
     }
 
     function location(){
@@ -26,7 +23,6 @@ export default function item({ e , navigation} , key ) {
             <View style={styles.details}>
                 <Text style={styles.text}> Name : {e.name} </Text>
                 <Text style={styles.text}> Price : {e.price} </Text>
-                <Text style={styles.text}> Date : {e.date}</Text>
             </View>
             <View style={styles.buttonstyle}>
                 <TouchableOpacity style={styles.button} onPress={handle}>
