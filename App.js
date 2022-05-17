@@ -1,6 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
 import Register from "./Components/Users/Register";
 import Login from "./Components/Users/Login";
+import ForgotPassword from "./Components/Users/ForgotPassword";
 import { auth } from "./db/Config";
 import { useState, useEffect } from "react";
 import { NavigationContainer } from '@react-navigation/native';
@@ -22,6 +23,7 @@ import TennisEdit from "./Pages/AdminArea/TennisEdit"
 import Stadium from "./Pages/Stadium";
 import ValidationPage from "./Pages/ValidationPage"
 
+
 const NotUsrStck = createNativeStackNavigator();
 
 function NotUser() {
@@ -34,6 +36,11 @@ function NotUser() {
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
                 }} />
                 <NotUsrStck.Screen name='Register' component={Register} options={{
+                    headerStyle: { backgroundColor: "#220e24", },
+                    headerTintColor: '#FFF',
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
+                }} />
+                <NotUsrStck.Screen name='ForgotPassword' component={ForgotPassword} options={{
                     headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }

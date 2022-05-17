@@ -15,6 +15,7 @@ const Login = ({ navigation }) => {
             .catch((e) => setError(e.message));
   }
 
+
   return (
     <KeyboardAvoidingView style={styles.mainview} >
       <View style={styles.screen}>
@@ -52,7 +53,14 @@ const Login = ({ navigation }) => {
 
       <Text style={styles.errorText}>{error}</Text>
 
-      <Text>New User ?</Text>  
+      <View style={styles.row}>
+        <TouchableOpacity onPress={() => { navigation.navigate('ForgotPassword') }}>
+          <Text>Forgot Password?</Text>
+        </TouchableOpacity>
+
+        <Text>New User ?</Text>
+      </View>
+
       <View>
         <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('Register') }}>
           <Text style={styles.buttontext}>Register</Text>
@@ -72,6 +80,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 60,
     alignSelf: "stretch",
 
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   screen: {
     justifyContent: 'center',

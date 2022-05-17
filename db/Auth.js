@@ -6,7 +6,7 @@ import {
   sendPasswordResetEmail,
   confirmPasswordReset,
   signInWithCredential,
-  FacebookAuthProvider, getAuth,
+  FacebookAuthProvider, getAuth, updateCurrentUser,
 } from "firebase/auth";
 
 const authentication = getAuth(app);
@@ -55,4 +55,17 @@ async function signout() {
   authentication.signOut().then().catch((e) => console.log(e.message));
 }
 
-export { register, login,signout,isSignedIn,getUserUId,getUserToken };
+async function forgotpassword(email) {
+  await sendPasswordResetEmail(auth, email)
+  .then(() => {
+    alert('Password reset email sent!')
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+}
+
+
+export { register, login,signout,isSignedIn,getUserUId,getUserToken,forgotpassword };
