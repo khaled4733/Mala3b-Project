@@ -22,27 +22,32 @@ import BasketballEdit from "./Pages/AdminArea/BasketballEdit";
 import TennisEdit from "./Pages/AdminArea/TennisEdit"
 import Stadium from "./Pages/Stadium";
 import ValidationPage from "./Pages/ValidationPage"
-
+import WelcomePage from "./Pages/WelcomePage";
 
 const NotUsrStck = createNativeStackNavigator();
 
 function NotUser() {
     return (
         <NavigationContainer>
-            <NotUsrStck.Navigator initialRouteName='SignIn'>
+            <NotUsrStck.Navigator initialRouteName='WelcomePage'>
+                <NotUsrStck.Screen name='WelcomePage' component={WelcomePage} options={{
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
+                }} />
                 <NotUsrStck.Screen name='SignIn' component={Login} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
                 }} />
                 <NotUsrStck.Screen name='Register' component={Register} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
                 }} />
                 <NotUsrStck.Screen name='ForgotPassword' component={ForgotPassword} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
                 }} />
             </NotUsrStck.Navigator>
@@ -65,68 +70,68 @@ function User({ user, email }) {
 
 
                 <UserStack.Screen name="Football" component={Football} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="Basketball" component={Basketball} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="Tennis" component={Tennis} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="Stadium" component={Stadium} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="Profile" component={Profile} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="Payment" component={Payment} initialParams={{ user }} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="AdminArea" component={AdminArea} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="FootBallEdit" component={FootBallEdit} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="BasketballEdit" component={BasketballEdit} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="TennisEdit" component={TennisEdit} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="ValidationPage" component={ValidationPage} options={{
-                    headerStyle: { backgroundColor: "#220e24", },
-                    headerTintColor: '#FFF',
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
@@ -142,23 +147,23 @@ function BottomTab({ user }) {
     return (
         <Tab.Navigator>
             <UserStack.Screen name="Home" component={Home} options={{
-                headerStyle: { backgroundColor: "#220e24" },
-                headerTintColor: '#FFF',
+                headerStyle: { backgroundColor: "#FFF" },
+                headerTintColor: '#000000',
                 headerTitleStyle: { fontWeight: "bold", fontSize: 20 },
                 tabBarLabel: 'Home',
                 tabBarIcon: () => (
-                    <MaterialCommunityIcons name="home" color={'#220e24'} size={30} />
+                    <MaterialCommunityIcons name="home" color={'#000000'} size={30} />
                 ),
             }} />
 
-            <Tab.Screen name={"Profile"} initialParams={{user}} component={Profile} options={{
+            <Tab.Screen name={"Profile"} component={Profile} initialParams={{user}} options={{
                 headerStyle: {
-                    backgroundColor: '#220e24',
+                    backgroundColor: '#FFF',
                 },
-                headerTintColor: '#FFF',
+                headerTintColor: '#000000',
                 tabBarLabel: 'Profile',
                 tabBarIcon: () => (
-                    <MaterialCommunityIcons name="account" color={'#220e24'} size={30} />
+                    <MaterialCommunityIcons name="account" color={'#000000'} size={30} />
                 ),
             }
             }>

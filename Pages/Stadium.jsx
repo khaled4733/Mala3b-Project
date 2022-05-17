@@ -37,7 +37,7 @@ export default function Stadium({ route, navigation }) {
 
           <View style={styles.rightStyle}>
             <View style={styles.button}>
-              <Text style={styles.buttontext}>{stad.price}</Text>
+              <Text style={styles.buttontext}>{stad.price} L.E </Text>
             </View>
           </View>
 
@@ -64,21 +64,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 5,
-
+    backgroundColor: '#056284'
   },
   cover: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#056284',
     borderRadius: 10,
     borderColor: '#808080',
     borderWidth: 2
   },
   screen: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   image: {
     width: '75%',
     height: 200,
-    borderRadius: 20
+    borderRadius: 20,
   },
   leftStyle: {
     alignItems: 'flex-start',
@@ -89,12 +89,12 @@ const styles = StyleSheet.create({
     marginVertical: 20
   },
   buttontext: {
-    color: '#FFF',
+    color: '#056284',
     fontSize: 20,
-    fontWeight: '500',
+    fontWeight: 'bold',
   },
   button: {
-    backgroundColor: '#00626f',
+    backgroundColor: '#FFF',
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     width: '60%',
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2
   },
   button2: {
-    backgroundColor: '#00626f',
+    backgroundColor: '#FFF',
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
     width: '60%',
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2
   },
   button3: {
-    backgroundColor: '#00626f',
+    backgroundColor: '#FFF',
     borderRadius: 10,
     width: '60%',
     height: 80,

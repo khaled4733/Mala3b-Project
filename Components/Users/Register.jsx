@@ -43,6 +43,7 @@ const Register = ({ navigation }) => {
           onChangeText={setFullName}
           keyboardType="default"
           placeholder="Full Name"
+          placeholderTextColor={'#FFF'}
         />
 
         <TextInput
@@ -50,6 +51,7 @@ const Register = ({ navigation }) => {
           placeholder="example@email.com"
           onChangeText={setEmail}
           keyboardType="email-address"
+          placeholderTextColor={'#FFF'}
         />
 
         <TextInput
@@ -57,6 +59,7 @@ const Register = ({ navigation }) => {
           placeholder="01*********"
           onChangeText={setPhone}
           keyboardType="numeric"
+          placeholderTextColor={'#FFF'}
         />
 
         <TextInput
@@ -64,6 +67,7 @@ const Register = ({ navigation }) => {
           placeholder="Male/Female"
           onChangeText={setGender}
           keyboardType="default"
+          placeholderTextColor={'#FFF'}
         />
 
         <TextInput
@@ -71,6 +75,7 @@ const Register = ({ navigation }) => {
           onChangeText={setpassword}
           secureTextEntry={true}
           placeholder="password"
+          placeholderTextColor={'#FFF'}
         />
 
       </View>
@@ -82,13 +87,11 @@ const Register = ({ navigation }) => {
 
       <Text style={styles.errorText}>{error}</Text>
 
-      <Text>Already have an account?</Text>
 
-      <View >
-        <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('SignIn') }}>
-          <Text style={styles.buttontext}>sign in</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity onPress={() => { navigation.navigate('SignIn') }}>
+        <Text style={{fontSize: 15, color:'#FFF'}}>Already have an account?</Text>
+      </TouchableOpacity>
+
     </KeyboardAvoidingView>
 
 
@@ -100,26 +103,26 @@ export default Register;
 const styles = StyleSheet.create({
   mainview: {
     flex: 1,
-    backgroundColor: "#FFF",
+    backgroundColor: "#056284",
     paddingHorizontal: 60,
     alignSelf: "stretch",
-
+    justifyContent: 'center'
   },
   screen: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 40,
     paddingBottom: 20
   },
   text: {
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 25,
-    paddingBottom: 20
+    paddingBottom: 20,
+    color: '#FFF'
   },
   textinput: {
     height: 40,
-    color: '#0075aa',
+    color: '#FFF',
     borderBottomColor: "#cae9ff",
     borderBottomWidth: 4,
 
@@ -136,7 +139,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#022b3a',
     width: '100%',
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 5,
     alignItems: 'center',
   },
   buttontext: {

@@ -5,7 +5,7 @@ import Logo from '../../assets/2511582.jpg'
 
 const Login = ({ navigation }) => {
     const [email, setEmail] = useState("");
-    const [error, setError] = useState("");
+    const [error,  setError] = useState("");
 
     const handleforgotpassword = () => {
         forgotpassword(email)
@@ -24,6 +24,7 @@ const Login = ({ navigation }) => {
                 <TextInput
                     style={styles.textinput}
                     placeholder="example@email.com"
+                    placeholderTextColor={'#FFF'}
                     onChangeText={setEmail}
                     keyboardType="email-address"
                 />
@@ -47,15 +48,14 @@ export default Login;
 const styles = StyleSheet.create({
     mainview: {
         flex: 1,
-        backgroundColor: "#FFF",
+        backgroundColor: "#056284",
         paddingHorizontal: 60,
         alignSelf: "stretch",
-
+        justifyContent: 'center'
     },
     screen: {
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 40,
         paddingBottom: 20
     },
     text: {
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#022b3a',
         width: '100%',
         padding: 15,
-        borderRadius: 10,
+        borderRadius: 5,
         alignItems: 'center'
     },
     buttontext: {

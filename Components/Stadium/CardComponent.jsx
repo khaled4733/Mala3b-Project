@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: cardwidth - 40,
     height: 240,
-
+    backgroundColor: '#022b3a',
     shadowColor: '#000000',
     shadowOffset: {
       width: 5,
@@ -58,9 +58,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#FFF'
   },
   buttontext: {
-    color: '#FFF',
+    color: '#022b3a',
     fontSize: 20,
     fontWeight: '500'
   },
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
 
   },
   button: {
-    backgroundColor: '#022b3a',
+    backgroundColor: '#FFF',
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     width: '40%',

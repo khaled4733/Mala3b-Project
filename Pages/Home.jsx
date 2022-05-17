@@ -65,14 +65,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: "#FFF",
+    backgroundColor: "#056284",
     paddingBottom: 10
   },
   title: {
     fontSize: 25,
     fontWeight: "bold",
     margin: 20,
-    color: '#022b3a'
+    color: '#FFF'
   },
   CategoryCard: {
     flex: 1,

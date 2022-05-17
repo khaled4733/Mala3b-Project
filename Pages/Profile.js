@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     box1: {
-        backgroundColor: '#F0F0F0',
+        backgroundColor: '#056284',
         borderRadius: 20,
         marginVertical: 20,
         width: cardwidth - 65,

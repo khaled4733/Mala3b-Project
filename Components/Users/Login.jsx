@@ -10,9 +10,9 @@ const Login = ({ navigation }) => {
 
   const handleSignin = () => {
     console.log(email, password);
-          login(email, password)
-            .then()
-            .catch((e) => setError(e.message));
+    login(email, password)
+      .then()
+      .catch((e) => setError(e.message));
   }
 
 
@@ -23,15 +23,14 @@ const Login = ({ navigation }) => {
       </View>
 
       <Text style={styles.text}>Welcome back!</Text>
-      
+
       <View style={styles.format}>
         <TextInput
           style={styles.textinput}
           placeholder="example@email.com"
           onChangeText={setEmail}
           keyboardType="email-address"
-
-
+          placeholderTextColor={'#FFF'}
         />
 
         <TextInput
@@ -39,8 +38,7 @@ const Login = ({ navigation }) => {
           onChangeText={setpassword}
           secureTextEntry={true}
           placeholder="Password"
-
-
+          placeholderTextColor={'#FFF'}
         />
       </View>
 
@@ -53,19 +51,18 @@ const Login = ({ navigation }) => {
 
       <Text style={styles.errorText}>{error}</Text>
 
-      <View style={styles.row}>
+      <View style={styles.buttontextstyle}>
         <TouchableOpacity onPress={() => { navigation.navigate('ForgotPassword') }}>
-          <Text>Forgot Password?</Text>
+          <Text style={{fontSize: 15, color:'#FFF'}}>Forgot Password?</Text>
         </TouchableOpacity>
+      
 
-        <Text>New User ?</Text>
-      </View>
-
-      <View>
-        <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('Register') }}>
-          <Text style={styles.buttontext}>Register</Text>
+      
+        <TouchableOpacity onPress={() => { navigation.navigate('Register') }}>
+          <Text style={{fontSize: 15, color:'#FFF'}}>New User?</Text>
         </TouchableOpacity>
       </View>
+
     </KeyboardAvoidingView>
 
   );
@@ -76,10 +73,10 @@ export default Login;
 const styles = StyleSheet.create({
   mainview: {
     flex: 1,
-    backgroundColor: "#FFF",
+    backgroundColor: "#056284",
     paddingHorizontal: 60,
     alignSelf: "stretch",
-
+    justifyContent: 'center'
   },
   row: {
     flexDirection: 'row',
@@ -88,18 +85,18 @@ const styles = StyleSheet.create({
   screen: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 40,
     paddingBottom: 20
   },
   text: {
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 25,
-    paddingBottom: 20
+    paddingBottom: 20,
+    color: '#FFF'
   },
   textinput: {
     height: 40,
-    color: '#0075aa',
+    color: '#FFF',
     borderBottomColor: "#cae9ff",
     borderBottomWidth: 4,
 
@@ -116,8 +113,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#022b3a',
     width: '100%',
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 5,
     alignItems: 'center'
+  },
+  buttontextstyle: {
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   buttontext: {
     color: '#FFF',

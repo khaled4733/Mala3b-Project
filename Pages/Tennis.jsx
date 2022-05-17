@@ -25,12 +25,13 @@ export default function Football({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: '#056284',
     alignItems: 'center',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginTop: 10
+    marginTop: 10,
+    color: '#FFF'
   },
 });
