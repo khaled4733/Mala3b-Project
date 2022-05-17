@@ -1,10 +1,10 @@
-import { ScrollView, TouchableOpacity ,StyleSheet, Text,TextInput, View, Image, Button } from 'react-native'
+import { ScrollView, TouchableOpacity, StyleSheet, Text, Dimensions, View, Image } from 'react-native'
 import React from 'react'
 import { useEffect } from "react";
 
-import footballBackground from '../assets/footballBackground.png'
-import tennisBackground from '../assets/tennisBackground.png'
-import basketballBackground from '../assets/basketballBackground.png'
+import footballBackground from '../assets/Untitled-3.png'
+import tennisBackground from '../assets/Untitled-1.jpg'
+import basketballBackground from '../assets/Untitled-2.png'
 
 
 
@@ -14,72 +14,131 @@ export default function Home({ navigation, route }) {
 
 
   return (
-    <View style={styles.container}>
-
-
-      <Text style={styles.header}> Enter Your Booking Club </Text>
-      <ScrollView>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.title}> Welcome in Mal3ab! </Text>
         <View style={styles.cardsContainer}>
-          <View>
-            <Text style={styles.cardTitle}>Football</Text>
-            <TouchableOpacity onPress={() => { navigation.navigate('Football') }}>
-              <Image source={footballBackground} style={styles.ImageStyle} />
-            </TouchableOpacity>
+
+          <View style={styles.CategoryCard}>
+            <Image source={footballBackground} style={styles.ImageStyle} />
+            <View>
+              <Text style={styles.text1}> Football </Text>
+              <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('Football') }}>
+                <Text style={styles.buttontext}>GO!</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={styles.tennisStyle}>
-            <Text style={styles.cardTitle}>Tennis</Text>
-            <TouchableOpacity onPress={() => { navigation.navigate('Tennis') }}>
-              <Image source={tennisBackground} style={styles.ImageStyle} />
-            </TouchableOpacity>
+
+
+          <View style={styles.CategoryCard}>
+            <Image source={tennisBackground} style={styles.ImageStyle} />
+            <View>
+              <Text style={styles.text2}> Tennis </Text>
+              <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('Tennis') }}>
+                <Text style={styles.buttontext}>GO!</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-          <View source={basketballBackground} style={styles.basketballStyle}>
-            <Text style={styles.cardTitle}>Basketball</Text>
-            <TouchableOpacity onPress={() => { navigation.navigate('Basketball') }}>
-              <Image source={basketballBackground} style={styles.ImageStyle} />
-            </TouchableOpacity>
+
+
+          <View style={styles.CategoryCard}>
+            <Image source={basketballBackground} style={styles.ImageStyle} />
+            <View>
+              <Text style={styles.text3}> Basketball </Text>
+              <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('Basketball') }}>
+                <Text style={styles.buttontext}>GO!</Text>
+              </TouchableOpacity>
+            </View>
           </View>
+
+
         </View>
-      </ScrollView>
-
-    </View>
-
+      </View>
+    </ScrollView>
   );
 
 
 }
 
+const cardwidth = Math.round(Dimensions.get('window').width)
 const styles = StyleSheet.create({
   container: {
-    textAlign: 'center',
+    flex: 1,
     alignItems: 'center',
-    backgroundColor: "#e7e9ea",
-    width: "100%",
-    height: "100%",
+    backgroundColor: "#FFF",
+    paddingBottom: 10
   },
-  header: {
-    fontSize: 20,
+  title: {
+    fontSize: 25,
     fontWeight: "bold",
     margin: 20,
-    color: 'rgb(255, 255, 255)'
-
+    color: '#022b3a'
   },
-  cardsContainer: {
-    justifyContent: 'space-between',
-    padding: 20
-  },
+  CategoryCard: {
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: '#022b3a',
+    borderRadius: 20,
+    marginBottom: 30,
+    width: cardwidth - 40,
+    height: 150,
 
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 5,
+      height: 5
+    },
+    shadowOpacity: .25,
+    shadowRadius: 3
+  },
   ImageStyle: {
-    width: 300,
-    height: 200,
-    borderRadius: 16
+    width: cardwidth - 150,
+    height: 150,
+    borderTopLeftRadius: 16,
+    borderBottomLeftRadius: 16
   },
-  cardTitle: {
-    textAlign: 'center',
-    paddingBottom: 10,
+  text1: {
+    marginLeft: 12,
+    marginTop: 30,
     fontSize: 20,
-    fontWeight: 'bold',
-    color: 'rgb(255, 255, 255)'
-
+    fontWeight: '600',
+    color: '#FFF'
+  },
+  text2: {
+    marginLeft: 20,
+    marginTop: 30,
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#FFF'
+  },
+  text3: {
+    marginLeft: 5,
+    marginTop: 30,
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#FFF'
+  },
+  buttontext: {
+    color: '#005e88',
+    fontSize: 15,
+    fontWeight: '500'
+  },
+  button: {
+    backgroundColor: '#FFF',
+    marginLeft: 15,
+    marginTop: 20,
+    width: 80,
+    height: 35,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
-
 })
+
+
+{/* <TouchableOpacity onPress={() => { navigation.navigate('Football') }}>
+</TouchableOpacity>
+<TouchableOpacity onPress={() => { navigation.navigate('Tennis') }}>
+</TouchableOpacity>
+<TouchableOpacity onPress={() => { navigation.navigate('Basketball') }}>
+</TouchableOpacity> */}

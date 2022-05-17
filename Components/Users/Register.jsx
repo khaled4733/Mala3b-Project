@@ -1,26 +1,29 @@
 import { TouchableOpacity, KeyboardAvoidingView, StyleSheet, Text, View, TextInput, Image } from "react-native";
 import { React, useState } from "react";
-import { register,getUserUId,login } from "../../db/Auth";
+import { register, getUserUId, login } from "../../db/Auth";
 import Logo from '../../assets/2511582.jpg'
-import {addUser} from "../../db/User";
+import { addUser } from "../../db/User";
 
 
 const Register = ({ navigation }) => {
-  const [displayName, setdisplayName] = useState("");
+  const [fullname, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [gender, setGender] = useState("");
   const [password, setpassword] = useState("");
   const role = 0
+  const balance = 0
   const [error, setError] = useState("");
 
   const handleRegister = () => {
-    console.log(displayName, email, password);
+    console.log(fullname, email, password);
     register(email, password)
-      .then(()=>{
+      .then(() => {
         login(email, password).then(
-            () => {
-              console.log('login completed');
-              getUserUId().then((id) => addUser({id: id, email, password,role}));
-            }
+          () => {
+            console.log('login completed');
+            getUserUId().then((id) => addUser({ id: id, fullname, email, password, phone, gender, balance, role }));
+          }
         )
       })
       .catch((e) => setError(e.message));
@@ -37,16 +40,30 @@ const Register = ({ navigation }) => {
       <View style={styles.format}>
         <TextInput
           style={styles.textinput}
-          onChangeText={setdisplayName}
+          onChangeText={setFullName}
           keyboardType="default"
-          placeholder="User Name"
+          placeholder="Full Name"
         />
+
         <TextInput
           style={styles.textinput}
           placeholder="example@email.com"
           onChangeText={setEmail}
           keyboardType="email-address"
+        />
 
+        <TextInput
+          style={styles.textinput}
+          placeholder="01*********"
+          onChangeText={setPhone}
+          keyboardType="numeric"
+        />
+
+        <TextInput
+          style={styles.textinput}
+          placeholder="Male/Female"
+          onChangeText={setGender}
+          keyboardType="default"
         />
 
         <TextInput
@@ -83,7 +100,7 @@ export default Register;
 const styles = StyleSheet.create({
   mainview: {
     flex: 1,
-    backgroundColor: "#90EE90",
+    backgroundColor: "#FFF",
     paddingHorizontal: 60,
     alignSelf: "stretch",
 
@@ -102,7 +119,7 @@ const styles = StyleSheet.create({
   },
   textinput: {
     height: 40,
-    color: 'rgb(255, 255, 255)',
+    color: '#0075aa',
     borderBottomColor: "#cae9ff",
     borderBottomWidth: 4,
 

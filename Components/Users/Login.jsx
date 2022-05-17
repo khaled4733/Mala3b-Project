@@ -68,7 +68,7 @@ export default Login;
 const styles = StyleSheet.create({
   mainview: {
     flex: 1,
-    backgroundColor: "#90EE90",
+    backgroundColor: "#FFF",
     paddingHorizontal: 60,
     alignSelf: "stretch",
 
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   textinput: {
     height: 40,
-    color: 'rgb(255, 255, 255)',
+    color: '#0075aa',
     borderBottomColor: "#cae9ff",
     borderBottomWidth: 4,
 
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttontext: {
-    color: 'rgb(255, 255, 255)',
+    color: '#FFF',
     fontWeight: '700',
     fontSize: 16,
   },

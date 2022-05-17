@@ -15,10 +15,11 @@ import Basketball from "./Pages/Basketball";
 import Tennis from "./Pages/Tennis";
 import Profile from "./Pages/Profile";
 import Payment from "./Pages/Payment";
-import AdminArea from "./Pages/AdminArea";
-import FootBallEdit from "./Pages/FootballEdit";
-import BasketballEdit from "./Pages/BasketballEdit";
-import TennisEdit from "./Pages/TennisEdit"
+import AdminArea from "./Pages/AdminArea/AdminArea";
+import FootBallEdit from "./Pages/AdminArea/FootballEdit";
+import BasketballEdit from "./Pages/AdminArea/BasketballEdit";
+import TennisEdit from "./Pages/AdminArea/TennisEdit"
+import Stadium from "./Pages/Stadium";
 import ValidationPage from "./Pages/ValidationPage"
 
 const NotUsrStck = createNativeStackNavigator();
@@ -28,14 +29,14 @@ function NotUser() {
         <NavigationContainer>
             <NotUsrStck.Navigator initialRouteName='SignIn'>
                 <NotUsrStck.Screen name='SignIn' component={Login} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
                 }} />
                 <NotUsrStck.Screen name='Register' component={Register} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
                 }} />
             </NotUsrStck.Navigator>
         </NavigationContainer>
@@ -57,63 +58,69 @@ function User({ user, email }) {
 
 
                 <UserStack.Screen name="Football" component={Football} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="Basketball" component={Basketball} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="Tennis" component={Tennis} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
+                }} />
+
+                <UserStack.Screen name="Stadium" component={Stadium} options={{
+                    headerStyle: { backgroundColor: "#220e24", },
+                    headerTintColor: '#FFF',
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="Profile" component={Profile} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
-                <UserStack.Screen name="Payment" component={Payment} initialParams={{user}} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
+                <UserStack.Screen name="Payment" component={Payment} initialParams={{ user }} options={{
+                    headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="AdminArea" component={AdminArea} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="FootBallEdit" component={FootBallEdit} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="BasketballEdit" component={BasketballEdit} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="TennisEdit" component={TennisEdit} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
                 <UserStack.Screen name="ValidationPage" component={ValidationPage} options={{
-                    headerStyle: { backgroundColor: "#3c8d0d", },
+                    headerStyle: { backgroundColor: "#220e24", },
                     headerTintColor: '#FFF',
-                    headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 }
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
             </UserStack.Navigator>
@@ -128,23 +135,23 @@ function BottomTab({ user }) {
     return (
         <Tab.Navigator>
             <UserStack.Screen name="Home" component={Home} options={{
-                headerStyle: { backgroundColor: "#3c8d0d", },
+                headerStyle: { backgroundColor: "#220e24" },
                 headerTintColor: '#FFF',
-                headerTitleStyle: { fontWeight: "bold", fontSize: 30, paddingLeft: 50 },
+                headerTitleStyle: { fontWeight: "bold", fontSize: 20 },
                 tabBarLabel: 'Home',
                 tabBarIcon: () => (
-                    <MaterialCommunityIcons name="home" color={'#000000'} size={30} />
+                    <MaterialCommunityIcons name="home" color={'#220e24'} size={30} />
                 ),
             }} />
 
-            <Tab.Screen name={"Profile"} component={Profile} options={{
+            <Tab.Screen name={"Profile"} initialParams={{user}} component={Profile} options={{
                 headerStyle: {
-                    backgroundColor: '#3c8d0d',
+                    backgroundColor: '#220e24',
                 },
-                headerTintColor: '#fff',
+                headerTintColor: '#FFF',
                 tabBarLabel: 'Profile',
                 tabBarIcon: () => (
-                    <MaterialCommunityIcons name="account" color={'#000000'} size={30} />
+                    <MaterialCommunityIcons name="account" color={'#220e24'} size={30} />
                 ),
             }
             }>

@@ -140,7 +140,7 @@ export default function Payment({navigation,route}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#90EE90',
+    backgroundColor: '#FFF',
     textAlign: 'center',
     paddingHorizontal: 50
 

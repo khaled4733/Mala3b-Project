@@ -49,6 +49,7 @@ async function getUsers() {
         return {id: doc.id, ...doc.data()};
     });
 }
+
 //                    F-> for "football"
  async function updateFAvailable(tempDoc) {
      try {
@@ -94,4 +95,4 @@ async function deleteFStadium(docId) {
 //     return unsubscribe;
 // }
 
-export {getUsers, addUser,updateFAvailable,addUsersToDocuments};
+export {getUsers, addUser,updateFAvailable,addUsersToDocuments , getUserById};
