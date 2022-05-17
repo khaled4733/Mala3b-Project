@@ -1,6 +1,6 @@
 import { TouchableOpacity, ScrollView, StyleSheet, Text, View, Image } from 'react-native'
 import { React, useState, useEffect } from "react";
-import Item from '../Components/Stadium/CardComponent'
+import Card from '../Components/Stadium/CardComponent'
 import { getBStadium } from '../db/Stadium/Basketball'
 
 export default function Football({ navigation }) {
@@ -11,13 +11,14 @@ export default function Football({ navigation }) {
     });
   }, []);
   return (
-    <ScrollView>
-      <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      <View style={styles.titlealign}>
         <Text style={styles.title}> Search Component </Text>
-        {stadium.map((item, index) => {
-          return (<Item e={item} key={index} navigation={navigation} />);
-        })}
       </View>
+
+      {stadium.map((item, index) => {
+        return (<Card e={item} key={index} navigation={navigation} />);
+      })}
     </ScrollView>
   );
 }
@@ -26,7 +27,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#056284',
-    alignItems: 'center',
+  },
+  titlealign: {
+    alignItems: 'center'
   },
   title: {
     fontSize: 24,

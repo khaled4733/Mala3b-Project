@@ -3,7 +3,6 @@ import React from 'react'
 import { useEffect } from "react";
 
 import footballBackground from '../assets/Untitled-3.png'
-import tennisBackground from '../assets/Untitled-1.jpg'
 import basketballBackground from '../assets/Untitled-2.png'
 
 
@@ -31,7 +30,7 @@ export default function Home({ navigation, route }) {
 
 
           <View style={styles.CategoryCard}>
-            <Image source={tennisBackground} style={styles.ImageStyle} />
+            <Image source={footballBackground} style={styles.ImageStyle} />
             <View>
               <Text style={styles.text2}> Tennis </Text>
               <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('Tennis') }}>
@@ -66,7 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: "#056284",
-    paddingBottom: 10
+    paddingBottom: 60
   },
   title: {
     fontSize: 25,
@@ -78,6 +77,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     backgroundColor: '#022b3a',
+    alignItems: 'center',
     borderRadius: 20,
     marginBottom: 30,
     width: cardwidth - 40,
@@ -93,27 +93,24 @@ const styles = StyleSheet.create({
   },
   ImageStyle: {
     width: cardwidth - 150,
-    height: 150,
+    height: 173,
     borderTopLeftRadius: 16,
     borderBottomLeftRadius: 16
   },
   text1: {
-    marginLeft: 12,
-    marginTop: 30,
+    marginLeft: 18,
     fontSize: 20,
     fontWeight: '600',
     color: '#FFF'
   },
   text2: {
-    marginLeft: 20,
-    marginTop: 30,
+    marginLeft: 23,
     fontSize: 20,
     fontWeight: '600',
     color: '#FFF'
   },
   text3: {
-    marginLeft: 5,
-    marginTop: 30,
+    marginLeft: 10,
     fontSize: 20,
     fontWeight: '600',
     color: '#FFF'
