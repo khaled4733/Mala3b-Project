@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import footballBackground from '../assets/Untitled-3.png'
 import basketballBackground from '../assets/Untitled-2.png'
-
+import tennisBackground from '../assets/Untitled-1.png'
 
 
 
@@ -30,7 +30,7 @@ export default function Home({ navigation, route }) {
 
 
           <View style={styles.CategoryCard}>
-            <Image source={footballBackground} style={styles.ImageStyle} />
+            <Image source={tennisBackground} style={styles.ImageStyle} />
             <View>
               <Text style={styles.text2}> Tennis </Text>
               <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('Tennis') }}>
