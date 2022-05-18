@@ -7,11 +7,11 @@ const WelcomePage = ({navigation}) => {
 
       <Text style={styles.title}>Welcome to Mal3ab!</Text>
 
-      <TouchableOpacity style={styles.signinbutton} onPress={()=>{navigation.navigate('SignIn')}}>
+      <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate('SignIn')}}>
         <Text style={styles.buttontext}>Sign in</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.registerbutton} onPress={()=>{navigation.navigate('Register')}}>
+      <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate('Register')}}>
         <Text style={styles.buttontext}>Register</Text>
       </TouchableOpacity>
 
@@ -27,34 +27,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
-    backgroundColor: '#056284'
+    backgroundColor: '#22223b'
   },
-  signinbutton: {
+  button: {
     width: '100%',
     height: 40,
-    backgroundColor: '#7687db',
-    marginVertical: 20,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  registerbutton: {
-    width: '100%',
-    height: 40,
-    backgroundColor: '#8f45a9',
+    backgroundColor: '#f2e9e4',
     marginVertical: 20,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center'
   },
   buttontext: {
-    color: '#FFF',
+    color: '#22223b',
     fontWeight: '700',
     fontSize: 16,
   },
   title: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#FFF'
+    color: '#FFF',
+    marginBottom: 30
   }
 })

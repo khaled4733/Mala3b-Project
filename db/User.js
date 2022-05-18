@@ -11,14 +11,19 @@ import {
   deleteField,
   arrayUnion,
   arrayRemove,
-  deleteDoc,
+  deleteDoc
 } from "firebase/firestore";
-import { app, db } from "./Config";
+import {app, db} from "./Config";
 
 const firestoreDB = getFirestore(app);
 
 async function addUser(user) {
-  await setDoc(doc(firestoreDB, "users", user.id), { user });
+  try {
+      await setDoc(doc(firestoreDB, "users", user.id),  user );
+      console.log("Document written with ID: ", user.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
 }
 
 async function addUsersToDocuments(collectionName, docId, userCollection) {
@@ -60,24 +65,6 @@ async function updateFAvailable(tempDoc) {
     await setDoc(doc(db, "football", tempDoc.id), tempDoc); //if document with "tempDoc.id" not found add it, else update it
   } catch (e) {
     console.error(e);
-  }
-}
-
-async function deleteFStadium(docId) {
-  try {
-    const docRef = doc(db, "football", docId);
-    await updateDoc(docRef, {
-      available: deleteField(),
-      date: deleteField(),
-      id: deleteField(),
-      name: deleteField(),
-      pic: deleteField(),
-      price: deleteField(),
-    });
-
-    console.log("Document deleted with ID: ", docId);
-  } catch (error) {
-    console.error("Error deleting document: ", error);
   }
 }
 

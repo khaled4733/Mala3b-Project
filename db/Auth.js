@@ -1,4 +1,4 @@
-import { auth,app } from "./Config";
+import { auth, app } from "./Config";
 import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -7,17 +7,20 @@ import {
   confirmPasswordReset,
   signInWithCredential,
   FacebookAuthProvider, getAuth, updateCurrentUser,
+  
 } from "firebase/auth";
 
 const authentication = getAuth(app);
 
-// onAuthStateChanged(auth, (user) => {
-//   if (user != null) {
-//     console.log("We are authenticated now!");
-//   }
-//
-//   // Do other things
-// });
+async function getCurrentUser(){
+  await onAuthStateChanged(auth, (user) => {
+    if (user != null) {
+      console.log(user.email);
+    }
+  
+    // Do other things
+  });
+}
 
 async function isSignedIn() {
 
@@ -57,15 +60,17 @@ async function signout() {
 
 async function forgotpassword(email) {
   await sendPasswordResetEmail(auth, email)
-  .then(() => {
-    alert('Password reset email sent!')
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
+    .then(() => {
+      alert('Password reset email sent!')
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
 }
 
 
-export { register, login,signout,isSignedIn,getUserUId,getUserToken,forgotpassword };
+
+
+export { register, login, signout, isSignedIn, getUserUId, getUserToken, forgotpassword ,getCurrentUser};

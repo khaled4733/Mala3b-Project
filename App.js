@@ -23,65 +23,36 @@ import TennisEdit from "./Pages/AdminArea/TennisEdit";
 import Stadium from "./Pages/Stadium";
 import ValidationPage from "./Pages/ValidationPage";
 import WelcomePage from "./Pages/WelcomePage";
-import EditProfile from "./Pages/EditPPofile";
+import Favourite from "./Pages/Favourite";
+import EditProfile from "./Pages/EditProfile";
+
+
 const NotUsrStck = createNativeStackNavigator();
 
 function NotUser() {
   return (
     <NavigationContainer>
-      <NotUsrStck.Navigator initialRouteName="WelcomePage">
-        <NotUsrStck.Screen
-          name="WelcomePage"
-          component={WelcomePage}
-          options={{
-            headerStyle: { backgroundColor: "#FFF" },
-            headerTintColor: "#000000",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              fontSize: 20,
-              paddingLeft: 10,
-            },
-          }}
-        />
-        <NotUsrStck.Screen
-          name="SignIn"
-          component={Login}
-          options={{
-            headerStyle: { backgroundColor: "#FFF" },
-            headerTintColor: "#000000",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              fontSize: 20,
-              paddingLeft: 10,
-            },
-          }}
-        />
-        <NotUsrStck.Screen
-          name="Register"
-          component={Register}
-          options={{
-            headerStyle: { backgroundColor: "#FFF" },
-            headerTintColor: "#000000",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              fontSize: 20,
-              paddingLeft: 10,
-            },
-          }}
-        />
-        <NotUsrStck.Screen
-          name="ForgotPassword"
-          component={ForgotPassword}
-          options={{
-            headerStyle: { backgroundColor: "#FFF" },
-            headerTintColor: "#000000",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              fontSize: 20,
-              paddingLeft: 10,
-            },
-          }}
-        />
+      <NotUsrStck.Navigator initialRouteName='WelcomePage'>
+        <NotUsrStck.Screen name='WelcomePage' component={WelcomePage} options={{
+          headerStyle: { backgroundColor: "#FFF", },
+          headerTintColor: '#000000',
+          headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
+        }} />
+        <NotUsrStck.Screen name='SignIn' component={Login} options={{
+          headerStyle: { backgroundColor: "#FFF", },
+          headerTintColor: '#000000',
+          headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
+        }} />
+        <NotUsrStck.Screen name='Register' component={Register} options={{
+          headerStyle: { backgroundColor: "#FFF", },
+          headerTintColor: '#000000',
+          headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
+        }} />
+        <NotUsrStck.Screen name='ForgotPassword' component={ForgotPassword} options={{
+          headerStyle: { backgroundColor: "#FFF", },
+          headerTintColor: '#000000',
+          headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
+        }} />
       </NotUsrStck.Navigator>
     </NavigationContainer>
   );
@@ -242,6 +213,26 @@ function BottomTab({ user }) {
       />
 
       <Tab.Screen
+        name={"Favourite"}
+        component={Favourite}
+        initialParams={{ user }}
+        options={{
+          headerStyle: {
+            backgroundColor: "#FFF",
+          },
+          headerTintColor: "#000000",
+          tabBarLabel: "Profile",
+          tabBarIcon: () => (
+            <MaterialCommunityIcons
+              name="heart"
+              color={"#000000"}
+              size={30}
+            />
+          ),
+        }}
+      ></Tab.Screen>
+
+      <Tab.Screen
         name={"Profile"}
         component={Profile}
         initialParams={{ user }}
@@ -260,6 +251,7 @@ function BottomTab({ user }) {
           ),
         }}
       ></Tab.Screen>
+
     </Tab.Navigator>
   );
 }

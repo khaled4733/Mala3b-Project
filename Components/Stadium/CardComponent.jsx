@@ -1,12 +1,24 @@
-import { TouchableOpacity, View, Text, StyleSheet, Image, Dimensions } from 'react-native'
-import React from 'react'
+import { TouchableOpacity, View, Text, StyleSheet, ImageBackground, Dimensions, Switch } from 'react-native'
+import React ,{useState} from 'react'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+
 export default function CardComponent({ e, navigation }) {
+
+  
+  const [name1 , setname] = useState("heart-outline");
+
+  
 
   return (
     <View style={styles.Container}>
       <View style={styles.CardContainer}>
 
-        <Image source={{uri : e.pic}} style={styles.image} />
+        <ImageBackground source={{ uri: e.pic }} style={styles.image} >
+          <TouchableOpacity onPress={() => { setname('heart') }}>
+            {/* <Icon name={name1} color={'#FF0000'} size={50} /> */}
+          </TouchableOpacity>
+        </ImageBackground>
 
         <View style={styles.style1}>
           <Text style={styles.title}> {e.name} </Text>
@@ -15,7 +27,7 @@ export default function CardComponent({ e, navigation }) {
 
         <View style={styles.style2}>
 
-          <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('Stadium' , {e : e})}}>
+          <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('Stadium', { e: e }) }}>
             <Text style={styles.buttontext}>Details</Text>
           </TouchableOpacity>
 
@@ -34,10 +46,11 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   CardContainer: {
-    borderRadius: 20,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
     width: cardwidth - 40,
     height: 240,
-    backgroundColor: '#022b3a',
+    backgroundColor: '#f2e9e4',
     shadowColor: '#000000',
     shadowOffset: {
       width: 5,
@@ -52,16 +65,25 @@ const styles = StyleSheet.create({
     width: cardwidth - 40,
     height: 130,
     opacity: 0.9,
-    marginBottom: 5
+    marginBottom: 5,
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end'
+  },
+  favouritebutton: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginRight: 30,
+    paddingTop: 18
   },
   title: {
     justifyContent: 'flex-start',
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#FFF'
+    color: '#22223b'
   },
   buttontext: {
-    color: '#022b3a',
+    color: '#FFF',
     fontSize: 20,
     fontWeight: '500'
   },
@@ -73,7 +95,7 @@ const styles = StyleSheet.create({
 
   },
   button: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#22223b',
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     width: '40%',
