@@ -4,17 +4,27 @@ import {
   Text,
   View,
   TextInput,
-  ScrollView
+  ScrollView,
+  Dimensions
 } from "react-native";
+
 import React, { useState } from "react";
-import { addFStadium, deleteFStadium } from "../../db/Stadium/Football";
+import { addFStadium, deleteFStadium, updateFStadium } from "../../db/Stadium/Football";
+
 const FootballEdit = ({ navigation }) => {
   const [id, setid] = useState("");
   const [name, setname] = useState("");
   const [pic, setpic] = useState("");
   const [link, setlink] = useState("");
-  const [date, setdate] = useState("");
   const [price, setprice] = useState("");
+
+  const [idu, setidu] = useState("");
+
+  const [id1, setid1] = useState("");
+  const [name1, setname1] = useState("");
+  const [pic1, setpic1] = useState("");
+  const [link1, setlink1] = useState("");
+  const [price1, setprice1] = useState("");
   // const [error, setError] = useState("");
 
   function addfootball() {
@@ -23,137 +33,232 @@ const FootballEdit = ({ navigation }) => {
       pic: pic,
       price: price,
       link: link,
-      date: date,
-      id: id,
+      id: id
     };
 
-    addFStadium(football).then(alert("done!"));
+    addFStadium(football, id).then(alert("done!"));
     console.log("football", football);
+    setid('');
+    setname('');
+    setpic('');
+    setlink('');
+    setprice('');
   }
 
-    function deletefootball() {
-      deleteFStadium(id).then(alert("done!"));
-    }
+  function deleteStadium() {
+    deleteFStadium(idu).then(alert("done!"));
+    setidu('');
+  }
+
+  function updateStadium() {
+    var football = {
+      name: name1,
+      pic: pic1,
+      price: price1,
+      link: link1,
+    };
+
+    updateFStadium(id1, football).then(alert("done!"));
+    setid1('');
+    setname1('');
+    setpic1('');
+    setlink1('');
+    setprice1('');
+  }
 
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.title}>add Stadium</Text>
-        <View>
-          <TextInput
-            style={styles.textinput}
-            placeholder="id"
-            value={id}
-            onChangeText={(text) => setid(text)}
-            keyboardType="default"
-          />
 
-          <TextInput
-            style={styles.textinput}
-            placeholder="name"
-            value={name}
-            onChangeText={(text) => setname(text)}
-            keyboardType="default"
-          />
+        <View style={styles.addView}>
+          <Text style={styles.title}>add Stadium</Text>
+          <View>
+            <TextInput
+              style={styles.textinput}
+              placeholder="id"
+              value={id}
+              onChangeText={(text) => setid(text)}
+              keyboardType="default"
+            />
 
-          <TextInput
-            style={styles.textinput}
-            placeholder="picture link"
-            value={pic}
-            onChangeText={(text) => setpic(text)}
-            keyboardType="default"
-          />
+            <TextInput
+              style={styles.textinput}
+              placeholder="name"
+              value={name}
+              onChangeText={(text) => setname(text)}
+              keyboardType="default"
+            />
 
-          <TextInput
-            style={styles.textinput}
-            placeholder="location link"
-            value={link}
-            onChangeText={(text) => setlink(text)}
-            keyboardType="default"
-          />
+            <TextInput
+              style={styles.textinput}
+              placeholder="picture link"
+              value={pic}
+              onChangeText={(text) => setpic(text)}
+              keyboardType="default"
+            />
 
-          <TextInput
-            style={styles.textinput}
-            placeholder="date"
-            value={date}
-            onChangeText={(text) => setdate(text)}
-            keyboardType="default"
-          />
+            <TextInput
+              style={styles.textinput}
+              placeholder="location link"
+              value={link}
+              onChangeText={(text) => setlink(text)}
+              keyboardType="default"
+            />
 
-          <TextInput
-            style={styles.textinput}
-            placeholder="price"
-            value={price}
-            onChangeText={(text) => setprice(text)}
-            keyboardType="default"
-          />
-
+            <TextInput
+              style={styles.textinput}
+              placeholder="price"
+              value={price}
+              onChangeText={(text) => setprice(text)}
+              keyboardType="default"
+            />
+          </View>
+          <View style={styles.format}>
+            <TouchableOpacity
+              style={styles.buttonstyle}
+              onPress={() => addfootball()}
+            >
+              <Text style={styles.buttontext}>Add</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.format}>
-          <TouchableOpacity
-            style={styles.buttonstyle}
-            onPress={() => addfootball()}
-          >
-            <Text style={styles.buttontext}>Add</Text>
-          </TouchableOpacity>
-        </View>
+
+
+
         <View style={styles.line}></View>
 
-        <Text style={styles.title}>delete Stadium</Text>
-        <View>
-          <TextInput
-            style={styles.textinput}
-            placeholder="enter id"
-            value={id}
-            onChangeText={(text) => setid(text)}
-            keyboardType="default"
-          />
+        <View style={styles.addView}>
+          <Text style={styles.title}>delete Stadium</Text>
+          <View>
+            <TextInput
+              style={styles.textinput}
+              placeholder="enter id"
+              value={idu}
+              onChangeText={(text) => setidu(text)}
+              keyboardType="default"
+            />
+          </View>
+          <View style={styles.format}>
+            <TouchableOpacity
+              style={styles.buttonstyle}
+              onPress={deleteStadium}
+            >
+
+              <Text style={styles.buttontext}>Delete</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <View style={styles.format}>
-          <TouchableOpacity
-            style={styles.buttonstyle}
-            onPress={() => deletefootball()}
-          >
 
-            <Text style={styles.buttontext}>Delete</Text>
-          </TouchableOpacity>
+
+        <View style={styles.line}></View>
+
+        <View style={styles.addView}>
+          <Text style={styles.title}>update Stadium</Text>
+          <View>
+            <TextInput
+              style={styles.textinput}
+              placeholder="id"
+              value={id1}
+              onChangeText={(text) => setid1(text)}
+              keyboardType="default"
+            />
+
+            <TextInput
+              style={styles.textinput}
+              placeholder="name"
+              value={name1}
+              onChangeText={(text) => setname1(text)}
+              keyboardType="default"
+            />
+
+            <TextInput
+              style={styles.textinput}
+              placeholder="picture link"
+              value={pic1}
+              onChangeText={(text) => setpic1(text)}
+              keyboardType="default"
+            />
+
+            <TextInput
+              style={styles.textinput}
+              placeholder="location link"
+              value={link1}
+              onChangeText={(text) => setlink1(text)}
+              keyboardType="default"
+            />
+
+            <TextInput
+              style={styles.textinput}
+              placeholder="price"
+              value={price1}
+              onChangeText={(text) => setprice1(text)}
+              keyboardType="default"
+            />
+          </View>
+          <View style={styles.format}>
+            <TouchableOpacity
+              style={styles.buttonstyle}
+              onPress={updateStadium}
+            >
+
+              <Text style={styles.buttontext}>Update</Text>
+            </TouchableOpacity>
+          </View>
         </View>
+
       </View>
     </ScrollView>
   );
 };
 export default FootballEdit;
 
+const cardwidth = Math.round(Dimensions.get('window').width)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFF",
-    padding: 20,
+    backgroundColor: "#f2e9e4",
+    alignItems: 'center'
+  },
+  addView: {
+    backgroundColor: '#22223b',
+    borderRadius: 20,
+    width: cardwidth - 100,
+    height: 500,
+    paddingHorizontal: 25,
+    marginVertical: 15,
+    justifyContent: 'center',
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 5,
+      height: 5
+    },
+    shadowOpacity: .25,
+    shadowRadius: 3
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     paddingBottom: 10,
+    color: '#f2e9e4'
   },
   buttonstyle: {
-    backgroundColor: "#022b3a",
+    backgroundColor: "#f2e9e4",
     width: "50%",
     height: 40,
-    marginBottom: 50,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
   },
   buttontext: {
-    color: "rgb(255, 255, 255)",
+    color: "#22223b",
     fontWeight: "700",
     fontSize: 16,
   },
   textinput: {
     height: 40,
-    color: "#000000",
-    borderBottomColor: "#cae9ff",
+    color: "#f2e9e4",
+    borderBottomColor: "#f2e9e4",
     borderBottomWidth: 4,
   },
   format: {
@@ -163,7 +268,7 @@ const styles = StyleSheet.create({
   },
   line: {
     width: "100%",
-    backgroundColor: "#000000",
+    backgroundColor: "#022b3a",
     height: 1,
   },
 });

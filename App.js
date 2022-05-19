@@ -23,6 +23,9 @@ import TennisEdit from "./Pages/AdminArea/TennisEdit"
 import Stadium from "./Pages/Stadium";
 import ValidationPage from "./Pages/ValidationPage"
 import WelcomePage from "./Pages/WelcomePage";
+import Favourite from "./Pages/Favourite";
+import EditUserProfile from "./Pages/EditUserProfile";
+import UserEdit from "./Pages/AdminArea/UserEdit";
 
 const NotUsrStck = createNativeStackNavigator();
 
@@ -33,6 +36,7 @@ function NotUser() {
                 <NotUsrStck.Screen name='WelcomePage' component={WelcomePage} options={{
                     headerStyle: { backgroundColor: "#FFF", },
                     headerTintColor: '#000000',
+                    headerShown: false,
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20, paddingLeft: 10 }
                 }} />
                 <NotUsrStck.Screen name='SignIn' component={Login} options={{
@@ -135,6 +139,18 @@ function User({ user, email }) {
                     headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
                 }} />
 
+                <UserStack.Screen name="EditUserProfile" component={EditUserProfile} options={{
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
+                }} />
+
+                <UserStack.Screen name="UserEdit" component={UserEdit} options={{
+                    headerStyle: { backgroundColor: "#FFF", },
+                    headerTintColor: '#000000',
+                    headerTitleStyle: { fontWeight: "bold", fontSize: 20 }
+                }} />
+
             </UserStack.Navigator>
         </NavigationContainer>
     )
@@ -156,7 +172,20 @@ function BottomTab({ user }) {
                 ),
             }} />
 
-            <Tab.Screen name={"Profile"} component={Profile} initialParams={{user}} options={{
+            <Tab.Screen name={"Favourite"} component={Favourite} initialParams={{ user }} options={{
+                headerStyle: {
+                    backgroundColor: '#FFF',
+                },
+                headerTintColor: '#000000',
+                tabBarLabel: 'Favourite',
+                tabBarIcon: () => (
+                    <MaterialCommunityIcons name="heart" color={'#000000'} size={30} />
+                ),
+            }
+            }>
+            </Tab.Screen>
+
+            <Tab.Screen name={"Profile"} component={Profile} initialParams={{ user }} options={{
                 headerStyle: {
                     backgroundColor: '#FFF',
                 },
@@ -167,7 +196,6 @@ function BottomTab({ user }) {
                 ),
             }
             }>
-
             </Tab.Screen>
         </Tab.Navigator>
     )

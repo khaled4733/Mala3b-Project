@@ -140,7 +140,7 @@ export default function Payment({navigation,route}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#056284',
+    backgroundColor: '#5390d9',
     textAlign: 'center',
     paddingHorizontal: 50
 
@@ -164,14 +164,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 4,
   },
   buttonstyle: {
-    backgroundColor: '#022b3a',
+    backgroundColor: '#f2e9e4',
     width: '100%',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
   },
   buttontext: {
-    color: 'rgb(255, 255, 255)',
+    color: '#FFF',
     fontWeight: '700',
     fontSize: 16,
   },

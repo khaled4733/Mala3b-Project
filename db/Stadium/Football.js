@@ -9,14 +9,33 @@ import {
   query,
   where,
   onSnapshot,
+  updateDoc,
 } from "firebase/firestore";
 
-async function addFStadium(Football) {
+async function addFStadium(Football , id) {
   try {
-    const docRef = await addDoc(collection(db, "football"), Football);
-    console.log("Document written with ID: ", docRef.id);
+    await setDoc(doc(db, "football" , id), Football);
+    console.log("Document written with ID: ", id);
   } catch (e) {
     console.error("Error adding document: ", e);
+  }
+}
+
+async function deleteFStadium(docId) {
+  try {
+      await deleteDoc(doc(db, "football", docId));
+      console.log("Document deleted with ID: ", docId);
+  } catch (error) {
+      console.error("Error deleting document: ", error);
+  }
+}
+
+async function updateFStadium(docId , Football) {
+  try {
+      await updateDoc(doc(db, "football", docId) , Football);
+      console.log("Document updated with ID: ", docId);
+  } catch (error) {
+      console.error("Error updateing document: ", error);
   }
 }
 
@@ -32,13 +51,4 @@ async function getFStadium() {
 
 
 
-async function deleteFStadium(id) {
-  try {
-    await deleteDoc(doc(db, "football", id));
-    console.log("Document deleted with ID: ", id);
-  } catch (error) {
-    console.error("Error deleting document: ", error);
-  }
-}
-
-export { addFStadium, getFStadium, deleteFStadium };
+export { addFStadium, getFStadium, deleteFStadium ,updateFStadium };

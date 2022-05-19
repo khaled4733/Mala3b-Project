@@ -26,7 +26,7 @@ export default function Football({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#056284',
+    backgroundColor: '#22223b',
   },
   titlealign: {
     alignItems: 'center'

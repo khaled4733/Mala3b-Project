@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: "#056284",
+    backgroundColor: "#22223b",
     paddingBottom: 60
   },
   title: {
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   CategoryCard: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: '#022b3a',
+    backgroundColor: '#f2e9e4',
     alignItems: 'center',
     borderRadius: 20,
     marginBottom: 30,
@@ -101,27 +101,27 @@ const styles = StyleSheet.create({
     marginLeft: 18,
     fontSize: 20,
     fontWeight: '600',
-    color: '#FFF'
+    color: '#22223b'
   },
   text2: {
     marginLeft: 23,
     fontSize: 20,
     fontWeight: '600',
-    color: '#FFF'
+    color: '#22223b'
   },
   text3: {
     marginLeft: 10,
     fontSize: 20,
     fontWeight: '600',
-    color: '#FFF'
+    color: '#22223b'
   },
   buttontext: {
-    color: '#005e88',
+    color: '#FFF',
     fontSize: 15,
     fontWeight: '500'
   },
   button: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#22223b',
     marginLeft: 15,
     marginTop: 20,
     width: 80,

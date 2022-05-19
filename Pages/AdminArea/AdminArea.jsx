@@ -17,6 +17,10 @@ export default function AdminArea({navigation}) {
       <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('TennisEdit') }}>
         <Text style={styles.buttontext}>Click for edit Tennis Stadiums</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('UserEdit') }}>
+        <Text style={styles.buttontext}>Click for edit users Stadiums</Text>
+      </TouchableOpacity>
       
     </View>
   )
@@ -26,7 +30,7 @@ export default function AdminArea({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFF",
+    backgroundColor: "#22223b",
     padding: 60,
     alignItems: "center",
     justifyContent: 'center'
@@ -35,10 +39,10 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     paddingBottom: 10,
-    
+    color: '#22223b'
   },
   buttonstyle: {
-    backgroundColor: '#022b3a',
+    backgroundColor: '#f2e9e4',
     width: '100%',
     height: 80,
     marginBottom: 50,
@@ -47,7 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   buttontext: {
-    color: 'rgb(255, 255, 255)',
+    color: '#22223b',
     fontWeight: '700',
     fontSize: 16,
   },

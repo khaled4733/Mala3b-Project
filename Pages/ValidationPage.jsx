@@ -68,6 +68,7 @@ export default function ValidationPage({ navigation, route }) {
                     placeholder="Enter the day"
                     onChangeText={setDay}
                     keyboardType="default"
+                    placeholderTextColor={'#22223b'}
                 />
 
                 <TextInput
@@ -75,6 +76,7 @@ export default function ValidationPage({ navigation, route }) {
                     placeholder="Enter start time"
                     onChangeText={setStDate}
                     keyboardType="default"
+                    placeholderTextColor={'#22223b'}
                 />
 
                 <TextInput
@@ -82,6 +84,7 @@ export default function ValidationPage({ navigation, route }) {
                     placeholder="Enter end time"
                     onChangeText={setEdDate}
                     keyboardType="default"
+                    placeholderTextColor={'#22223b'}
                 />
 
                 <TouchableOpacity style={styles.button} onPress={handel}>
@@ -99,11 +102,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: 'center',
-        backgroundColor: '#056284'
+        backgroundColor: '#f2e9e4'
     },
     component: {
         flex: 1,
-        backgroundColor: '#003a55',
+        backgroundColor: '#22223b',
         borderRadius: 20,
         width: cardwidth - 100,
         marginVertical: 60,
@@ -122,16 +125,16 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
         width: '75%',
         height: 40,
-        backgroundColor: '#FFF',
+        backgroundColor: '#f2e9e4',
         borderRadius: 15
     },
     buttontext: {
-        color: '#005e88',
+        color: '#22223b',
         fontSize: 15,
         fontWeight: '500'
     },
     button: {
-        backgroundColor: '#FFF',
+        backgroundColor: '#f2e9e4',
         marginTop: 20,
         width: 120,
         height: 50,
