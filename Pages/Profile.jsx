@@ -91,7 +91,7 @@ export default function Profile({ navigation, route }) {
             <View style={styles.row}>
                 <Icon name="cellphone" color={'#f2e9e4'} size={30} />
                 <View style={styles.box}>
-                    <Text style={{ color: '#22223b', marginLeft: 10, fontSize: 15 }}> {user.phone} </Text>
+                    <Text style={{ color: '#22223b', marginLeft: 10, fontSize: 15 }}> {User.phone} </Text>
                 </View>
             </View>
 

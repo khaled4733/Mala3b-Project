@@ -1,23 +1,22 @@
 import {
-    addDoc,
-    collection,
-    getDocs,
-    getFirestore,
-    setDoc,
-    doc,
-    query,
-    where,
-    updateDoc,
-    deleteField,
-    arrayUnion,
-    arrayRemove,
-    deleteDoc
+  addDoc,
+  collection,
+  getDocs,
+  getFirestore,
+  setDoc,
+  doc,
+  query,
+  where,
+  updateDoc,
+  deleteField,
+  arrayUnion,
+  arrayRemove,
+  deleteDoc
 } from "firebase/firestore";
 import { getUserUId } from "./Auth";
 import {app, db} from "./Config";
 
 const firestoreDB = getFirestore(app);
-
 
 async function addUser(user) {
     try {
@@ -68,19 +67,28 @@ async function getUsers() {
 }
 
 
+async function editUser(user) {
+  console.log("edit user", user);
+  await setDoc(doc(db, "users", user.id), user);
+}
 
+async function getUsers() {
+  const usersCol = collection(firestoreDB, "users");
+  const userSnapshot = await getDocs(usersCol);
+  const userList = userSnapshot.docs.map((doc) => {
+    return { id: doc.id, ...doc.data() };
+  });
+  console.log(userList);
+  return userList;
+}
 
-// function subscribe(callback) {
-//     const unsubscribe = onSnapshot(
-//         query(collection(db, "Chats")),
-//         (snapshot) => {
-//             const source = snapshot.metadata.hasPendingWrites ? "Local" : "Server";
-//             snapshot.docChanges().forEach((change) => {
-//                 if (callback) callback({ change, snapshot });
-//             });
-//         }
-//     );
-//     return unsubscribe;
-// }
+async function getUserById(id) {
+  const usersRef = collection(firestoreDB, "users");
+  const q = query(usersRef, where("id", "==", id));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((doc) => {
+    return { id: doc.id, ...doc.data() };
+  });
+}
 
 export {getUsers, addUser,updateFAvailable,addUsersToDocuments , getUserById };
