@@ -72,23 +72,6 @@ async function editUser(user) {
   await setDoc(doc(db, "users", user.id), user);
 }
 
-async function getUsers() {
-  const usersCol = collection(firestoreDB, "users");
-  const userSnapshot = await getDocs(usersCol);
-  const userList = userSnapshot.docs.map((doc) => {
-    return { id: doc.id, ...doc.data() };
-  });
-  console.log(userList);
-  return userList;
-}
 
-async function getUserById(id) {
-  const usersRef = collection(firestoreDB, "users");
-  const q = query(usersRef, where("id", "==", id));
-  const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map((doc) => {
-    return { id: doc.id, ...doc.data() };
-  });
-}
 
 export {getUsers, addUser,updateFAvailable,addUsersToDocuments , getUserById };

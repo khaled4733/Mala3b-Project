@@ -1,7 +1,7 @@
 import { ScrollView, TouchableOpacity, StyleSheet, Text, View, Dimensions } from 'react-native'
 import { signout } from '../db/Auth'
 import React, { useState, useEffect } from "react";
-import { getUsers } from '../db/User'
+import { getUserById, getUsers } from '../db/User'
 import { getUserUId } from "../db/Auth";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -15,6 +15,11 @@ export default function Profile({ navigation, route }) {
     getUserUId().then((e) => {
         setIdu(e);
     })
+
+    // getUserById(idu).then((data) =>{
+    //     user = data;
+    // })
+    
 
     var user = {
         fullname: '',
@@ -91,7 +96,7 @@ export default function Profile({ navigation, route }) {
             <View style={styles.row}>
                 <Icon name="cellphone" color={'#f2e9e4'} size={30} />
                 <View style={styles.box}>
-                    <Text style={{ color: '#22223b', marginLeft: 10, fontSize: 15 }}> {User.phone} </Text>
+                    <Text style={{ color: '#22223b', marginLeft: 10, fontSize: 15 }}> {user.phone} </Text>
                 </View>
             </View>
 
@@ -105,7 +110,7 @@ export default function Profile({ navigation, route }) {
             <View style={styles.row}>
                 <Icon name="email" color={'#f2e9e4'} size={30} />
                 <View style={styles.box}>
-                    <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('EditUserProfile') }}>
+                    <TouchableOpacity style={styles.buttonstyle} onPress={() => { navigation.navigate('EditProfile') }}>
                         <Text style={styles.buttontext}>Edit myProfile</Text>
                     </TouchableOpacity>
                 </View>
