@@ -1,7 +1,23 @@
-import { Dimensions,TouchableOpacity, StyleSheet, Text, View, TextInput, ScrollView } from 'react-native'
-import React, { useState } from 'react'
-import { addTStadium, deleteTStadium, updateTStadium } from "../../db/Stadium/Tennis";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Dimensions,
+  Platform,
+  ScrollView,
+  Image,
+} from "react-native";
 
+import React, { useState, useEffect, useRef } from "react";
+import RBSheet from "react-native-raw-bottom-sheet";
+import * as ImagePicker from "expo-image-picker";
+import {
+  addTStadium,
+  deleteTStadium,
+  updateTStadium,
+} from "../../db/Stadium/Tennis";
 
 export default function TennisEdit({ navigation }) {
   const [id, setid] = useState("");
@@ -30,16 +46,16 @@ export default function TennisEdit({ navigation }) {
 
     addTStadium(tennis, id).then(alert("done!"));
     console.log("football", tennis);
-    setid('');
-    setname('');
-    setpic('');
-    setlink('');
-    setprice('');
+    setid("");
+    setname("");
+    setpic("");
+    setlink("");
+    setprice("");
   }
 
   function deleteStadium() {
     deleteTStadium(idu).then(alert("done!"));
-    setidu('');
+    setidu("");
   }
 
   function updateStadium() {
@@ -51,19 +67,145 @@ export default function TennisEdit({ navigation }) {
     };
 
     updateTStadium(id1, football).then(alert("done!"));
-    setid1('');
-    setname1('');
-    setpic1('');
-    setlink1('');
-    setprice1('');
+    setid1("");
+    setname1("");
+    setpic1("");
+    setlink1("");
+    setprice1("");
   }
+
+  useEffect(async () => {
+    if (Platform.OS !== "web") {
+      const { status } =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (status !== "granted") {
+        alert("permision denied");
+      }
+    }
+  }, []);
+
+  const PickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log("result", result);
+    if (!result.cancelled) {
+      setpic(result.uri);
+    }
+  };
+
+  const PickImage1 = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log("result", result);
+    if (!result.cancelled) {
+      setpic1(result.uri);
+    }
+  };
+
+  const refRBSheet = useRef();
+  const refRBSheet1 = useRef();
 
   return (
     <ScrollView>
       <View style={styles.container}>
-
         <View style={styles.addView}>
           <Text style={styles.title}>add Stadium</Text>
+
+          <View style={styles.format}>
+            <TouchableOpacity onPress={() => refRBSheet.current.open()}>
+              <Image source={{ uri: pic }} style={styles.userimage} />
+            </TouchableOpacity>
+          </View>
+
+          <RBSheet
+            ref={refRBSheet}
+            closeOnDragDown={true}
+            closeOnPressMask={false}
+            customStyles={{
+              wrapper: {
+                backgroundColor: "transparent",
+              },
+              draggableIcon: {
+                backgroundColor: "#000",
+              },
+            }}
+          >
+            <View style={styles.view}>
+              <Text
+                style={{
+                  fontSize: 24,
+                  fontWeight: "bold",
+                  paddingBottom: 10,
+                  color: "#22223b",
+                  marginBottom: 40,
+                }}
+              >
+                Upload Photo
+              </Text>
+              <TouchableOpacity style={styles.buttonstyle1}>
+                <Text style={styles.buttontext}> Take Photo </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.buttonstyle1} onPress={PickImage}>
+                <Text style={styles.buttontext}>
+                  {" "}
+                  Choose Photo from gallery{" "}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </RBSheet>
+
+          <RBSheet
+            ref={refRBSheet1}
+            closeOnDragDown={true}
+            closeOnPressMask={false}
+            customStyles={{
+              wrapper: {
+                backgroundColor: "transparent",
+              },
+              draggableIcon: {
+                backgroundColor: "#000",
+              },
+            }}
+          >
+            <View style={styles.view}>
+              <Text
+                style={{
+                  fontSize: 24,
+                  fontWeight: "bold",
+                  paddingBottom: 10,
+                  color: "#22223b",
+                  marginBottom: 40,
+                }}
+              >
+                Upload Photo
+              </Text>
+              <TouchableOpacity style={styles.buttonstyle1}>
+                <Text style={styles.buttontext}> Take Photo </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.buttonstyle1}
+                onPress={PickImage1}
+              >
+                <Text style={styles.buttontext}>
+                  {" "}
+                  Choose Photo from gallery{" "}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </RBSheet>
+
           <View>
             <TextInput
               style={styles.textinput}
@@ -71,7 +213,7 @@ export default function TennisEdit({ navigation }) {
               value={id}
               onChangeText={(text) => setid(text)}
               keyboardType="default"
-              placeholderTextColor={'f2e9e4'}
+              placeholderTextColor={"#f2e9e4"}
             />
 
             <TextInput
@@ -80,16 +222,7 @@ export default function TennisEdit({ navigation }) {
               value={name}
               onChangeText={(text) => setname(text)}
               keyboardType="default"
-              placeholderTextColor={'f2e9e4'}
-            />
-
-            <TextInput
-              style={styles.textinput}
-              placeholder="picture link"
-              value={pic}
-              onChangeText={(text) => setpic(text)}
-              keyboardType="default"
-              placeholderTextColor={'f2e9e4'}
+              placeholderTextColor={"#f2e9e4"}
             />
 
             <TextInput
@@ -98,7 +231,7 @@ export default function TennisEdit({ navigation }) {
               value={link}
               onChangeText={(text) => setlink(text)}
               keyboardType="default"
-              placeholderTextColor={'f2e9e4'}
+              placeholderTextColor={"#f2e9e4"}
             />
 
             <TextInput
@@ -107,7 +240,7 @@ export default function TennisEdit({ navigation }) {
               value={price}
               onChangeText={(text) => setprice(text)}
               keyboardType="default"
-              placeholderTextColor={'f2e9e4'}
+              placeholderTextColor={"#f2e9e4"}
             />
           </View>
           <View style={styles.format}>
@@ -120,8 +253,6 @@ export default function TennisEdit({ navigation }) {
           </View>
         </View>
 
-
-
         <View style={styles.line}></View>
 
         <View style={styles.addView}>
@@ -133,7 +264,7 @@ export default function TennisEdit({ navigation }) {
               value={idu}
               onChangeText={(text) => setidu(text)}
               keyboardType="default"
-              placeholderTextColor={'f2e9e4'}
+              placeholderTextColor={"#f2e9e4"}
             />
           </View>
           <View style={styles.format}>
@@ -141,18 +272,22 @@ export default function TennisEdit({ navigation }) {
               style={styles.buttonstyle}
               onPress={deleteStadium}
             >
-
               <Text style={styles.buttontext}>Delete</Text>
             </TouchableOpacity>
           </View>
         </View>
 
-
-
         <View style={styles.line}></View>
 
         <View style={styles.addView}>
           <Text style={styles.title}>update Stadium</Text>
+
+          <View style={styles.format}>
+            <TouchableOpacity onPress={() => refRBSheet1.current.open()}>
+              <Image source={{ uri: pic1 }} style={styles.userimage} />
+            </TouchableOpacity>
+          </View>
+
           <View>
             <TextInput
               style={styles.textinput}
@@ -160,7 +295,7 @@ export default function TennisEdit({ navigation }) {
               value={id1}
               onChangeText={(text) => setid1(text)}
               keyboardType="default"
-              placeholderTextColor={'f2e9e4'}
+              placeholderTextColor={"#f2e9e4"}
             />
 
             <TextInput
@@ -169,16 +304,7 @@ export default function TennisEdit({ navigation }) {
               value={name1}
               onChangeText={(text) => setname1(text)}
               keyboardType="default"
-              placeholderTextColor={'f2e9e4'}
-            />
-
-            <TextInput
-              style={styles.textinput}
-              placeholder="picture link"
-              value={pic1}
-              onChangeText={(text) => setpic1(text)}
-              keyboardType="default"
-              placeholderTextColor={'f2e9e4'}
+              placeholderTextColor={"#f2e9e4"}
             />
 
             <TextInput
@@ -187,7 +313,7 @@ export default function TennisEdit({ navigation }) {
               value={link1}
               onChangeText={(text) => setlink1(text)}
               keyboardType="default"
-              placeholderTextColor={'f2e9e4'}
+              placeholderTextColor={"#f2e9e4"}
             />
 
             <TextInput
@@ -196,7 +322,7 @@ export default function TennisEdit({ navigation }) {
               value={price1}
               onChangeText={(text) => setprice1(text)}
               keyboardType="default"
-              placeholderTextColor={'f2e9e4'}
+              placeholderTextColor={"#f2e9e4"}
             />
           </View>
           <View style={styles.format}>
@@ -204,46 +330,43 @@ export default function TennisEdit({ navigation }) {
               style={styles.buttonstyle}
               onPress={updateStadium}
             >
-
               <Text style={styles.buttontext}>Update</Text>
             </TouchableOpacity>
           </View>
         </View>
-
       </View>
     </ScrollView>
   );
-};
+}
 
-
-const cardwidth = Math.round(Dimensions.get('window').width)
+const cardwidth = Math.round(Dimensions.get("window").width);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f2e9e4",
-    alignItems: 'center'
+    alignItems: "center",
   },
   addView: {
-    backgroundColor: '#22223b',
+    backgroundColor: "#22223b",
     borderRadius: 20,
     width: cardwidth - 100,
     height: 500,
     paddingHorizontal: 25,
     marginVertical: 15,
-    justifyContent: 'center',
-    shadowColor: '#000000',
+    justifyContent: "center",
+    shadowColor: "#000000",
     shadowOffset: {
       width: 5,
-      height: 5
+      height: 5,
     },
-    shadowOpacity: .25,
-    shadowRadius: 3
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     paddingBottom: 10,
-    color: '#f2e9e4'
+    color: "#f2e9e4",
   },
   buttonstyle: {
     backgroundColor: "#f2e9e4",
@@ -273,5 +396,24 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "#022b3a",
     height: 1,
+  },
+  userimage: {
+    height: 150,
+    width: 150,
+    borderRadius: 75,
+    justifyContent: "center",
+  },
+  view: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonstyle1: {
+    backgroundColor: "#f2e9e4",
+    width: "80%",
+    height: 40,
+    borderRadius: 10,
+    marginBottom: 20,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

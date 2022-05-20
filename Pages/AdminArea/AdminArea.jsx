@@ -39,7 +39,7 @@ export default function AdminArea({ navigation }) {
           navigation.navigate("UserEdit");
         }}
       >
-        <Text style={styles.buttontext}>Click for edit users Stadiums</Text>
+        <Text style={styles.buttontext}>Click for edit users</Text>
       </TouchableOpacity>
     </View>
   );

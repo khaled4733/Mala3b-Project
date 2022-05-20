@@ -6,6 +6,8 @@ import {
   View,
   Dimensions,
   Image,
+  Alert,
+  KeyboardAvoidingView,
 } from "react-native";
 import { signout } from "../db/Auth";
 import React, { useState, useEffect } from "react";
@@ -59,10 +61,22 @@ export default function Profile({ navigation, route }) {
   });
 
   const handleSignOut = () => {
-    signout()
-      .then(alert("signout successful"))
-      .catch((error) => alert(error.message));
-    console.log("signout successful");
+    Alert.alert("Logout!", "Are you sure you want to logout?", [
+      {
+        text: "Cancel",
+        onPress: () => {},
+      },
+
+      {
+        text: "Ok",
+        onPress: () => {
+          signout()
+            .then()
+            .catch((error) => alert(error.message));
+          console.log("signout successful");
+        },
+      },
+    ]);
   };
 
   const handleadminarea = () => {
@@ -152,7 +166,7 @@ export default function Profile({ navigation, route }) {
       </View>
 
       <View style={styles.row}>
-        <Icon name="email" color={"#f2e9e4"} size={30} />
+        <Icon name="lock" color={"#f2e9e4"} size={30} />
         <View style={styles.box}>
           <TouchableOpacity
             style={styles.buttonstyle}
@@ -196,6 +210,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 50,
     backgroundColor: "#22223b",
+    marginBottom: 15,
   },
   box1: {
     backgroundColor: "#f2e9e4",

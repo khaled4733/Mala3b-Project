@@ -7,25 +7,23 @@ import {
   TouchableOpacity,
   Dimensions,
   Platform,
+  KeyboardAvoidingView,
+  Alert,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { editUser } from "../db/User";
+import RBSheet from "react-native-raw-bottom-sheet";
 import { getUserUId } from "../db/Auth";
 import * as ImagePicker from "expo-image-picker";
-import Constants from "expo-constants";
 
-import userimage from "../assets/2511582.jpg";
-import { updateProfile } from "firebase/auth";
 export default function EditUserProfile({ navigation }) {
   const [fullname, setfullname] = useState("");
   const [phone, setphone] = useState("");
-  const [email, setemail] = useState("");
   const [idu, setIdu] = useState("");
   const [piclink, setpiclink] = useState("");
 
   var user = {
     fullname: "",
-    email: "",
     phone: "",
     piclink: "",
   };
@@ -35,9 +33,21 @@ export default function EditUserProfile({ navigation }) {
   });
 
   const updateuserinfo = () => {
-    editUser(idu, fullname, phone, email, piclink).then(
-      navigation.navigate("Profile")
-    );
+    Alert.alert("Update Profile", "Are you sure?", [
+      {
+        text: "Cancel",
+        onPress: () => {},
+      },
+
+      {
+        text: "Ok",
+        onPress: () => {
+          editUser(idu, fullname, phone, email, piclink).then(
+            navigation.navigate("Profile")
+          );
+        },
+      },
+    ]);
   };
 
   useEffect(async () => {
@@ -63,16 +73,54 @@ export default function EditUserProfile({ navigation }) {
       setpiclink(result.uri);
     }
   };
+
+  const refRBSheet = useRef();
+
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <View style={styles.addView}>
         <Text style={styles.title}>update user info</Text>
 
         <View style={styles.format}>
-          <TouchableOpacity onPress={PickImage}>
+          <TouchableOpacity onPress={() => refRBSheet.current.open()}>
             <Image source={{ uri: piclink }} style={styles.userimage} />
           </TouchableOpacity>
         </View>
+
+        <RBSheet
+          ref={refRBSheet}
+          closeOnDragDown={true}
+          closeOnPressMask={false}
+          customStyles={{
+            wrapper: {
+              backgroundColor: "transparent",
+            },
+            draggableIcon: {
+              backgroundColor: "#000",
+            },
+          }}
+        >
+          <View style={styles.view}>
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: "bold",
+                paddingBottom: 10,
+                color: "#22223b",
+                marginBottom: 40,
+              }}
+            >
+              Upload Photo
+            </Text>
+            <TouchableOpacity style={styles.buttonstyle1}>
+              <Text style={styles.buttontext}> Take Photo </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.buttonstyle1} onPress={PickImage}>
+              <Text style={styles.buttontext}> Choose Photo from gallery </Text>
+            </TouchableOpacity>
+          </View>
+        </RBSheet>
 
         <View>
           <TextInput
@@ -81,6 +129,7 @@ export default function EditUserProfile({ navigation }) {
             value={fullname}
             onChangeText={(text) => setfullname(text)}
             keyboardType="default"
+            placeholderTextColor={"#FFF"}
           />
 
           <TextInput
@@ -89,14 +138,7 @@ export default function EditUserProfile({ navigation }) {
             value={phone}
             onChangeText={(text) => setphone(text)}
             keyboardType="default"
-          />
-
-          <TextInput
-            style={styles.textinput}
-            placeholder="email"
-            value={email}
-            onChangeText={(text) => setemail(text)}
-            keyboardType="default"
+            placeholderTextColor={"#FFF"}
           />
         </View>
         <View style={styles.format}>
@@ -105,7 +147,7 @@ export default function EditUserProfile({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 const cardwidth = Math.round(Dimensions.get("window").width);
@@ -115,6 +157,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f2e9e4",
     alignItems: "center",
+  },
+  view: {
+    alignItems: "center",
+    justifyContent: "center",
   },
   addView: {
     backgroundColor: "#22223b",
@@ -143,6 +189,15 @@ const styles = StyleSheet.create({
     width: "50%",
     height: 40,
     borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonstyle1: {
+    backgroundColor: "#f2e9e4",
+    width: "80%",
+    height: 40,
+    borderRadius: 10,
+    marginBottom: 20,
     alignItems: "center",
     justifyContent: "center",
   },

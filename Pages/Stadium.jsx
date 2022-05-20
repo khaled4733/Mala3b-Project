@@ -23,43 +23,35 @@ export default function Stadium({ route, navigation }) {
   }
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.screen}>
-          <View style={styles.imageView}>
-            <Image source={{ uri: stad.pic }} style={styles.image} />
-          </View>
+    <ScrollView style={styles.container}>
+      <View style={styles.screen}>
+        <View style={styles.imageView}>
+          <Image source={{ uri: stad.pic }} style={styles.image} />
         </View>
+      </View>
 
-        <View style={styles.rightStyle}>
-          <View style={styles.button}>
-            <Text style={styles.buttontext}> {stad.name} </Text>
-          </View>
+      <View style={styles.rightStyle}>
+        <View style={styles.button}>
+          <Text style={styles.buttontext}> {stad.name} </Text>
         </View>
+      </View>
 
-        <View style={styles.leftStyle}>
-          <View style={styles.button2}>
-            <Text style={styles.buttontext}>Rating will be here</Text>
-          </View>
-        </View>
+      <View style={styles.leftStyle}>
+        <TouchableOpacity style={styles.button2} onPress={location}>
+          <Text style={styles.buttontext}> Location </Text>
+        </TouchableOpacity>
+      </View>
 
-        <View style={styles.rightStyle}>
-          <View style={styles.button}>
-            <Text style={styles.buttontext}>{stad.price} L.E </Text>
-          </View>
+      <View style={styles.rightStyle}>
+        <View style={styles.button}>
+          <Text style={styles.buttontext}>{stad.price} L.E </Text>
         </View>
+      </View>
 
-        <View style={styles.leftStyle}>
-          <TouchableOpacity style={styles.button2} onPress={location}>
-            <Text style={styles.buttontext}> Location </Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.screen}>
-          <TouchableOpacity style={styles.button3} onPress={handle}>
-            <Text style={styles.buttontext}> Book </Text>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.screen}>
+        <TouchableOpacity style={styles.button3} onPress={handle}>
+          <Text style={styles.buttontext}> Book </Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
