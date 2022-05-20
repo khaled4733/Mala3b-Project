@@ -78,6 +78,26 @@ async function editUser(docId, fullname, phone, email, piclink) {
   }
 }
 
+async function deleteUser(docId) {
+  try {
+    await deleteDoc(doc(db, "users", docId));
+    console.log("Document deleted with ID: ", docId);
+  } catch (error) {
+    console.error("Error deleting document: ", error);
+  }
+}
+
+async function updateUser(docId, balance1) {
+  try {
+    await updateDoc(doc(db, "users", docId), {
+      balance: balance1,
+    });
+    console.log("Document updated with ID: ", docId);
+  } catch (error) {
+    console.error("Error updateing document: ", error);
+  }
+}
+
 export {
   getUsers,
   addUser,
@@ -85,4 +105,6 @@ export {
   addUsersToDocuments,
   getUserById,
   editUser,
+  deleteUser,
+  updateUser,
 };

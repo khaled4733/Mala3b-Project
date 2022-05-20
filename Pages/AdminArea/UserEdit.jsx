@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 import React, { useState } from "react";
-import { addFStadium, deleteFStadium, updateFStadium } from "../../db/Stadium/Football";
+import { updateUser, deleteUser } from "../../db/User";
 
 const UserEdit = ({ navigation }) => {
     const [id, setid] = useState("");
@@ -21,18 +21,17 @@ const UserEdit = ({ navigation }) => {
 
     function updatebalance() {
         var user = {
-            balance: balance,
-            id: id
+            balance: '',
+            id: ''
         };
 
-        addFStadium(football, id).then(alert("done!"));
-        console.log("football", football);
+        updateUser(id , user.balance).then(alert("done!"));
         setid('');
         setBalance('');
     }
 
-    function deleteUser() {
-        deleteFStadium(idu).then(alert("done!"));
+    function deleteuser() {
+        deleteUser(idu).then(alert("done!"));
         setidu('');
     }
 
@@ -50,14 +49,16 @@ const UserEdit = ({ navigation }) => {
                             value={id}
                             onChangeText={(text) => setid(text)}
                             keyboardType="default"
+                            placeholderTextColor={'#f2e9e4'}
                         />
 
                         <TextInput
                             style={styles.textinput}
                             placeholder="balance"
                             value={balance}
-                            onChangeText={(text) => setname(text)}
+                            onChangeText={(text) => setBalance(text)}
                             keyboardType="default"
+                            placeholderTextColor={'#f2e9e4'}
                         />
                     </View>
 
@@ -84,12 +85,13 @@ const UserEdit = ({ navigation }) => {
                             value={idu}
                             onChangeText={(text) => setidu(text)}
                             keyboardType="default"
+                            placeholderTextColor={'#f2e9e4'}
                         />
                     </View>
                     <View style={styles.format}>
                         <TouchableOpacity
                             style={styles.buttonstyle}
-                            onPress={deleteUser}
+                            onPress={deleteuser}
                         >
 
                             <Text style={styles.buttontext}>Delete</Text>

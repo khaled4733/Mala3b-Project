@@ -1,24 +1,30 @@
-import { ScrollView, View, Text, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native'
-import React from 'react'
+import {
+  ScrollView,
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Linking,
+} from "react-native";
+import React from "react";
 
 export default function Stadium({ route, navigation }) {
   let { e: stad } = route.params;
 
   function handle() {
-    navigation.navigate('ValidationPage', { name: stad.name })
-
+    navigation.navigate("ValidationPage", { name: stad.name });
   }
 
   function location() {
     Linking.openURL(stad.link)
       .then()
-      .catch((err) => console.error('An error occurred', err))
+      .catch((err) => console.error("An error occurred", err));
   }
 
   return (
     <ScrollView>
       <View style={styles.container}>
-
         <View style={styles.screen}>
           <View style={styles.imageView}>
             <Image source={{ uri: stad.pic }} style={styles.image} />
@@ -54,99 +60,95 @@ export default function Stadium({ route, navigation }) {
             <Text style={styles.buttontext}> Book </Text>
           </TouchableOpacity>
         </View>
-
       </View>
     </ScrollView>
-  )
+  );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 5,
-    backgroundColor: '#22223b'
+    backgroundColor: "#22223b",
   },
   cover: {
-    backgroundColor: '#056284',
+    backgroundColor: "#056284",
     borderRadius: 10,
-    borderColor: '#808080',
-    borderWidth: 2
+    borderColor: "#808080",
+    borderWidth: 2,
   },
   screen: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   imageView: {
-    width: '75%',
+    width: "75%",
     height: 200,
     borderRadius: 20,
-    shadowColor: '#FFF',
+    shadowColor: "#FFF",
     shadowOffset: {
       width: 5,
-      height: 5
+      height: 5,
     },
-    shadowOpacity: .25,
-    shadowRadius: 2
+    shadowOpacity: 0.25,
+    shadowRadius: 2,
   },
   image: {
-    width: '100%',
+    width: "100%",
     height: 200,
     borderRadius: 20,
   },
   leftStyle: {
-    alignItems: 'flex-start',
-    marginVertical: 20
+    alignItems: "flex-start",
+    marginVertical: 20,
   },
   rightStyle: {
-    alignItems: 'flex-end',
-    marginVertical: 20
+    alignItems: "flex-end",
+    marginVertical: 20,
   },
   buttontext: {
-    color: '#22223b',
+    color: "#22223b",
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   button: {
-    backgroundColor: '#f2e9e4',
+    backgroundColor: "#f2e9e4",
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
-    width: '60%',
+    width: "60%",
     height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#FFF',
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#FFF",
     shadowOffset: {
       width: 5,
-      height: 5
+      height: 5,
     },
-    shadowOpacity: .25,
-    shadowRadius: 2
+    shadowOpacity: 0.25,
+    shadowRadius: 2,
   },
   button2: {
-    backgroundColor: '#f2e9e4',
+    backgroundColor: "#f2e9e4",
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
-    width: '60%',
+    width: "60%",
     height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#00b381',
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#00b381",
     shadowOffset: {
       width: 5,
-      height: 5
+      height: 5,
     },
-    shadowOpacity: .25,
-    shadowRadius: 2
+    shadowOpacity: 0.25,
+    shadowRadius: 2,
   },
   button3: {
-    backgroundColor: '#f2e9e4',
+    backgroundColor: "#f2e9e4",
     borderRadius: 10,
-    width: '60%',
+    width: "60%",
     height: 80,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 20,
-
   },
 });

@@ -1,5 +1,3 @@
-
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
@@ -18,7 +16,7 @@ const firebaseConfig = {
   storageBucket: "myfirst303.appspot.com",
   messagingSenderId: "613772915855",
   appId: "1:613772915855:web:6713714cb3390a64e9ecfa",
-  measurementId: "G-FMERZNCEC1"
+  measurementId: "G-FMERZNCEC1",
 };
 
 // Initialize Firebase
@@ -26,6 +24,4 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-
 export { app, db, auth };
-

@@ -6,26 +6,26 @@ import {
   sendPasswordResetEmail,
   confirmPasswordReset,
   signInWithCredential,
-  FacebookAuthProvider, getAuth, updateCurrentUser,
-  
+  FacebookAuthProvider,
+  getAuth,
+  updateCurrentUser,
 } from "firebase/auth";
 
 const authentication = getAuth(app);
 
-async function getCurrentUser(){
+async function getCurrentUser() {
   await onAuthStateChanged(auth, (user) => {
     if (user != null) {
       console.log(user.email);
     }
-  
+
     // Do other things
   });
 }
 
 async function isSignedIn() {
-
-  console.log('from isSignedIn method: ', authentication.currentUser);
-  return await authentication.currentUser != null;
+  console.log("from isSignedIn method: ", authentication.currentUser);
+  return (await authentication.currentUser) != null;
 }
 
 async function getUserUId() {
@@ -45,23 +45,23 @@ async function getUserToken() {
 
 async function register(email, password) {
   await createUserWithEmailAndPassword(auth, email, password);
-
-
 }
 
 async function login(email, password) {
   await signInWithEmailAndPassword(auth, email, password);
-
 }
 
 async function signout() {
-  authentication.signOut().then().catch((e) => console.log(e.message));
+  authentication
+    .signOut()
+    .then()
+    .catch((e) => console.log(e.message));
 }
 
 async function forgotpassword(email) {
   await sendPasswordResetEmail(auth, email)
     .then(() => {
-      alert('Password reset email sent!')
+      alert("Password reset email sent!");
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -70,7 +70,13 @@ async function forgotpassword(email) {
     });
 }
 
-
-
-
-export { register, login, signout, isSignedIn, getUserUId, getUserToken, forgotpassword ,getCurrentUser};
+export {
+  register,
+  login,
+  signout,
+  isSignedIn,
+  getUserUId,
+  getUserToken,
+  forgotpassword,
+  getCurrentUser,
+};

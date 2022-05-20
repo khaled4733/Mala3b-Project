@@ -70,6 +70,7 @@ export default function BasketballEdit({ navigation }) {
                             value={id}
                             onChangeText={(text) => setid(text)}
                             keyboardType="default"
+                            placeholderTextColor={'f2e9e4'}
                         />
 
                         <TextInput
@@ -78,6 +79,7 @@ export default function BasketballEdit({ navigation }) {
                             value={name}
                             onChangeText={(text) => setname(text)}
                             keyboardType="default"
+                            placeholderTextColor={'f2e9e4'}
                         />
 
                         <TextInput
@@ -86,6 +88,7 @@ export default function BasketballEdit({ navigation }) {
                             value={pic}
                             onChangeText={(text) => setpic(text)}
                             keyboardType="default"
+                            placeholderTextColor={'f2e9e4'}
                         />
 
                         <TextInput
@@ -94,6 +97,7 @@ export default function BasketballEdit({ navigation }) {
                             value={link}
                             onChangeText={(text) => setlink(text)}
                             keyboardType="default"
+                            placeholderTextColor={'f2e9e4'}
                         />
 
                         <TextInput
@@ -102,6 +106,7 @@ export default function BasketballEdit({ navigation }) {
                             value={price}
                             onChangeText={(text) => setprice(text)}
                             keyboardType="default"
+                            placeholderTextColor={'f2e9e4'}
                         />
                     </View>
                     <View style={styles.format}>
@@ -127,6 +132,7 @@ export default function BasketballEdit({ navigation }) {
                             value={idu}
                             onChangeText={(text) => setidu(text)}
                             keyboardType="default"
+                            placeholderTextColor={'f2e9e4'}
                         />
                     </View>
                     <View style={styles.format}>
@@ -153,6 +159,7 @@ export default function BasketballEdit({ navigation }) {
                             value={id1}
                             onChangeText={(text) => setid1(text)}
                             keyboardType="default"
+                            placeholderTextColor={'f2e9e4'}
                         />
 
                         <TextInput
@@ -161,6 +168,7 @@ export default function BasketballEdit({ navigation }) {
                             value={name1}
                             onChangeText={(text) => setname1(text)}
                             keyboardType="default"
+                            placeholderTextColor={'f2e9e4'}
                         />
 
                         <TextInput
@@ -169,6 +177,7 @@ export default function BasketballEdit({ navigation }) {
                             value={pic1}
                             onChangeText={(text) => setpic1(text)}
                             keyboardType="default"
+                            placeholderTextColor={'f2e9e4'}
                         />
 
                         <TextInput
@@ -177,6 +186,7 @@ export default function BasketballEdit({ navigation }) {
                             value={link1}
                             onChangeText={(text) => setlink1(text)}
                             keyboardType="default"
+                            placeholderTextColor={'f2e9e4'}
                         />
 
                         <TextInput
@@ -185,6 +195,7 @@ export default function BasketballEdit({ navigation }) {
                             value={price1}
                             onChangeText={(text) => setprice1(text)}
                             keyboardType="default"
+                            placeholderTextColor={'f2e9e4'}
                         />
                     </View>
                     <View style={styles.format}>
