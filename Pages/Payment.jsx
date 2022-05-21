@@ -12,13 +12,12 @@ import React, { useState, useEffect } from "react";
 import Logo from "../assets/2511582.jpg";
 import { deleteFStadium, getFStadium } from "../db/Stadium/Football";
 import { getUserUId } from "../db/Auth";
-import { addUsersToDocuments, updateFAvailable, test } from "../db/User";
+import {addUsersToDocuments, updateFootball, test, getUsers,updateUser} from "../db/User";
 import { getBStadium } from "../db/Stadium/Basketball";
 import { getTStadium } from "../db/Stadium/Tennis";
 
 export default function Payment({ navigation, route }) {
-  const { user } = route.params;
-  const currentUserId = user.uid;
+  let currentUserId;
   const [name, setName] = useState("");
   const [cardnumber, setCardNumber] = useState("");
   const [cvv, setCVV] = useState("");
@@ -26,90 +25,139 @@ export default function Payment({ navigation, route }) {
   const [Fstadium, setFStadium] = useState([]);
   const [Bstadium, setBStadium] = useState([]);
   const [Tstadium, setTStadium] = useState([]);
+  // const [currentUserBalance,setCurrentUserBalance] = useState();
+  let currentFStadPrice;
+  let currentBStadPrice;
+  let currentTStadPrice;
+  let {stadName} = route.params;
 
   // console.log(user)
 
   // console.log(stadium);
 
+  // set currentUserId with userId
+  useEffect(()=>{
+    getUserUId().then((userId)=>{
+      currentUserId = userId;
+    })
+  },[]);
+
   useEffect(() => {
     getFStadium().then((data) => {
       setFStadium(data);
-    });
-  }, []);
+    })
+  },[]);
+
 
   useEffect(() => {
     getBStadium().then((data) => {
       setBStadium(data);
-    });
-  }, []);
+    })
+  },[]);
+
 
   useEffect(() => {
     getTStadium().then((data) => {
       setTStadium(data);
-    });
-  }, []);
-
-  //  ---------------------------
-  //add users to football
-  useEffect(() => {
-    for (let i = 0; i < Fstadium.length; i++) {
-      addUsersToDocuments("football", Fstadium[i].id, user);
-    }
-  }, []);
-
-  //add users to basket
-  useEffect(() => {
-    for (let i = 0; i < Bstadium.length; i++) {
-      addUsersToDocuments("basketball", Bstadium[i].id, user);
-    }
-  }, []);
-
-  //add users to tennis
-  useEffect(() => {
-    for (let i = 0; i < Tstadium.length; i++) {
-      addUsersToDocuments("tennis", Tstadium[i].id, user);
-    }
-  }, []);
+    })
+  },[]);
 
   const Handler = () => {
-    // console.log("here in paymethod")
-
-    if (
-      name != "" &&
-      cardnumber.toString() != "" &&
-      cvv.toString() != "" &&
-      date.toString() != ""
-    ) {
-      // console.log("data is valid and sizo of Fstadium.length=", Fstadium.length, ' and currentUserId', currentUserId)
-      for (let i = 0; i < Fstadium.length; i++) {
-        // console.log("Fstadium[i].id=", Fstadium[i].id, ' i=', i)
-        if (Fstadium[i].id === currentUserId) {
-          updateFAvailable(Fstadium[i]).then(
-            alert("Done! Check your email for confirmation message")
-          );
+    /*Handle Football*/
+    console.log("here in paymethod")
+    //get currentFStadPrice
+    getFStadium().then((data) => {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].name === stadName) {
+          console.log("Fstad name in db is " + data[i].name)
+          console.log("Fstad price in db is " + data[i].price)
+          currentFStadPrice = data[i].price
+          console.log("Fstad price locally is " + currentFStadPrice)
         }
       }
+    })
 
-      for (let i = 0; i < Tstadium.length; i++) {
-        if (Tstadium[i].id === currentUserId) {
-          updateFAvailable(currentUserId, Tstadium[i]).then(
-            alert("Done! Check your email for confirmation message")
-          );
+    getBStadium().then((data) => {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].name === stadName) {
+          console.log("Bstad name in db is " + data[i].name)
+          console.log("Bstad price in db is " + data[i].price)
+          currentBStadPrice = data[i].price
+          console.log("Bstad price locally is " + currentFStadPrice)
         }
       }
+    })
 
-      for (let i = 0; i < Bstadium.length; i++) {
-        if (Bstadium[i].id === currentUserId) {
-          updateFAvailable(currentUserId, Bstadium[i]).then(
-            alert("Done! Check your email for confirmation message")
-          );
+    getTStadium().then((data) => {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].name === stadName) {
+          console.log("Tstad name in db is " + data[i].name)
+          console.log("Tstad price in db is " + data[i].price)
+          currentTStadPrice = data[i].price
+          console.log("Tstad price locally is " + currentFStadPrice)
         }
       }
-    } else {
-      alert("please fill the information of yout card");
-    }
-  };
+    })
 
+    //update current user balance
+    getUsers().then((users) => {
+      getUserUId().then((userId) => {
+        console.log("inside getUsers()")
+        console.log(users)
+        for (let i = 0; i < users.length; i++) {
+          console.log("should be printed" + users.length + " times")
+          if (userId == users[i].id) {
+            console.log("userId == users[i].id is true")
+            for (let j = 0; j < Fstadium.length; j++) {
+              if (Fstadium[j].name !== undefined) {   //to remove error "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'name')"
+                if (stadName === Fstadium[j].name) {
+                  if (currentFStadPrice > users[i].balance) {
+                    alert("you dont have enough money") // ASK doc -> not working
+                    Fstadium[j].state.pop();
+                    updateFootball(Fstadium[i]);
+                    navigation.goBack();
+                    break;
+                  } else {
+                    console.log("currentFStadPrice is : ",currentFStadPrice)
+                    console.log("users[i].balance is : ",users[i].balance)
+                    users[i].balance = users[i].balance - currentFStadPrice;
+                    updateUser(users[i]).then(() => alert("user's balance has been updated"));
+                    navigation.goBack();
+                  }
+                }
+              } else if (stadName === Bstadium[i].name) {
+                if (currentBStadPrice > users[i].balance) {
+                  alert("you dont have enough money")
+                  Bstadium[j].state.pop();
+                  updateBasketball(Bstadium[j]);
+                  navigation.goBack();
+                  break;
+                } else {
+                  console.log(currentBStadPrice)
+                  users[i].balance = users[i].balance - currentBStadPrice;
+                  updateUser(users[i]).then(() => alert("user's balance has been updated"));
+                  navigation.goBack();
+                }
+              } else if (stadName === Tstadium[j].name) {
+                if (currentTStadPrice > users[i].balance) {
+                  alert("you dont have enough money")
+                  Tstadium[j].state.pop();
+                  updateTennis(Tstadium[j]);
+                  navigation.goBack();
+                  break;
+                } else {
+                  console.log(currentTStadPrice)
+                  users[i].balance = users[i].balance - currentTStadPrice;
+                  updateUser(users[i]).then(() => alert("user's balance has been updated"));
+                  navigation.goBack();
+                }
+              }
+            }
+          }
+        }
+      })
+    })
+  }
   return (
     <View style={styles.container}>
       <View style={styles.screen}>

@@ -57,6 +57,8 @@ export default function BasketballEdit({ navigation }) {
     setidu("");
   }
 
+
+
   function updateStadium() {
     var football = {
       name: name1,

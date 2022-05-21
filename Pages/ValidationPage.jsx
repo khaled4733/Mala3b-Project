@@ -14,7 +14,7 @@ import {
   getFStadium,
 } from "../db/Stadium/Football";
 import { getUserUId } from "../db/Auth";
-import { updateFAvailable } from "../db/User";
+import { updateFootball } from "../db/User";
 
 export default function ValidationPage({ navigation, route }) {
   let { name: stadName } = route.params; //name -> att. in doc.
@@ -58,7 +58,7 @@ export default function ValidationPage({ navigation, route }) {
               getUserUId().then((id) => {
                 // gets id of current user in "id"
                 data[i].state.push({ day, stDate, edDate, id }); //note that we made "id" same as "document ID" manually
-                updateFAvailable(data[i]);
+                updateFootball(data[i]);
               });
               navigation.navigate("Payment", { stDate, edDate, day });
             }

@@ -25,6 +25,12 @@ import ValidationPage from "./Pages/ValidationPage";
 import WelcomePage from "./Pages/WelcomePage";
 import EditProfile from "./Pages/EditUserProfile";
 import UserEdit from "./Pages/AdminArea/UserEdit";
+import FootballValidationPage from "./Pages/FootballValidationPage";
+import BasketballValidationPage from "./Pages/BasketballValidationPage";
+import TennisValidationPage from "./Pages/TennisValidationPage";
+import Football_Details from "./Pages/Football_Details";
+import Basketball_Details from "./Pages/Basketball_Details";
+import Tennis_Details from "./Pages/Tennis_Details";
 
 const NotUsrStck = createNativeStackNavigator();
 
@@ -214,8 +220,8 @@ function User({ user, email }) {
         />
 
         <UserStack.Screen
-          name="ValidationPage"
-          component={ValidationPage}
+          name="FootballValidationPage"
+          component={FootballValidationPage}
           options={{
             headerStyle: { backgroundColor: "#FFF" },
             headerTintColor: "#000000",
@@ -223,7 +229,57 @@ function User({ user, email }) {
           }}
         />
 
-        <UserStack.Screen
+          <UserStack.Screen
+              name="BasketballValidationPage"
+              component={BasketballValidationPage}
+              options={{
+                  headerStyle: { backgroundColor: "#FFF" },
+                  headerTintColor: "#000000",
+                  headerTitleStyle: { fontWeight: "bold", fontSize: 20 },
+              }}
+          />
+
+          <UserStack.Screen
+              name="TennisValidationPage"
+              component={TennisValidationPage}
+              options={{
+                  headerStyle: { backgroundColor: "#FFF" },
+                  headerTintColor: "#000000",
+                  headerTitleStyle: { fontWeight: "bold", fontSize: 20 },
+              }}
+          />
+
+          <UserStack.Screen
+              name="Football_Details"
+              component={Football_Details}
+              options={{
+                  headerStyle: { backgroundColor: "#FFF" },
+                  headerTintColor: "#000000",
+                  headerTitleStyle: { fontWeight: "bold", fontSize: 20 },
+              }}
+          />
+          <UserStack.Screen
+              name="Basketball_Details"
+              component={Basketball_Details}
+              options={{
+                  headerStyle: { backgroundColor: "#FFF" },
+                  headerTintColor: "#000000",
+                  headerTitleStyle: { fontWeight: "bold", fontSize: 20 },
+              }}
+          />
+
+          <UserStack.Screen
+              name="Tennis_Details"
+              component={Tennis_Details}
+              options={{
+                  headerStyle: { backgroundColor: "#FFF" },
+                  headerTintColor: "#000000",
+                  headerTitleStyle: { fontWeight: "bold", fontSize: 20 },
+              }}
+          />
+
+
+          <UserStack.Screen
           name="UserEdit"
           component={UserEdit}
           options={{

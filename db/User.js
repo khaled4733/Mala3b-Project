@@ -55,13 +55,34 @@ async function getUserById(id) {
 }
 
 //                    F-> for "football"
-async function updateFAvailable(tempDoc) {
+async function updateFootball(tempDoc) {
   try {
     console.log(tempDoc);
     await setDoc(doc(db, "football", tempDoc.id), tempDoc); //if document with "tempDoc.id" not found add it, else update it
   } catch (e) {
     console.error(e);
   }
+}
+
+
+async function updateBasketball(tempDoc) {
+  try {
+    console.log(tempDoc);
+    await setDoc(doc(db, "basketball", tempDoc.id), tempDoc); //if document with "tempDoc.id" not found add it, else update it
+  } catch (e) {
+    console.error(e);
+  }
+
+}
+
+async function updateTennis(tempDoc) {
+  try {
+    console.log(tempDoc);
+    await setDoc(doc(db, "tennis", tempDoc.id), tempDoc); //if document with "tempDoc.id" not found add it, else update it
+  } catch (e) {
+    console.error(e);
+  }
+
 }
 
 async function editUser(docId, fullname, phone, piclink) {
@@ -86,24 +107,24 @@ async function deleteUser(docId) {
   }
 }
 
-async function updateUser(docId, balance1) {
+async function updateUser(tempUser) {
   try {
-    await updateDoc(doc(db, "users", docId), {
-      balance: balance1,
-    });
-    console.log("Document updated with ID: ", docId);
-  } catch (error) {
-    console.error("Error updateing document: ", error);
+    console.log(tempUser);
+    await setDoc(doc(db, "users", tempUser.id), tempUser); //if document with "tempDoc.id" not found add it, else update the document with this given field
+  } catch (e) {
+    console.error(e);
   }
 }
 
 export {
   getUsers,
   addUser,
-  updateFAvailable,
+  updateFootball,
   addUsersToDocuments,
   getUserById,
   editUser,
   deleteUser,
   updateUser,
+  updateBasketball,
+    updateTennis
 };

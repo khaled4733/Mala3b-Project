@@ -7,8 +7,9 @@ import {
   TextInput,
 } from "react-native";
 import { React, useState, useEffect } from "react";
-import Card from "../Components/Stadium/CardComponent";
+// import Card from "../Components/Stadium/CardComponent";
 import { getFStadium } from "../db/Stadium/Football";
+import Football_Item from "../Components/Stadium/Football_Item";
 
 export default function Football({ navigation }) {
   const [stadium, setStadium] = useState([]);
@@ -53,7 +54,7 @@ export default function Football({ navigation }) {
       </View>
       <View>
         {filteredData.map((item, index) => {
-          return <Card e={item} key={index} navigation={navigation} />;
+          return <Football_Item e={item} key={index} navigation={navigation} />;
         })}
       </View>
     </ScrollView>
