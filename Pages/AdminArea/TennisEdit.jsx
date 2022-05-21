@@ -25,6 +25,7 @@ export default function TennisEdit({ navigation }) {
   const [pic, setpic] = useState("");
   const [link, setlink] = useState("");
   const [price, setprice] = useState("");
+  const [state, setState] = useState([]);
   const [available, setavailable] = useState("");
 
   const [idu, setidu] = useState("");
@@ -42,6 +43,7 @@ export default function TennisEdit({ navigation }) {
       price: price,
       link: link,
       id: id,
+      state: state,
     };
 
     addTStadium(tennis, id).then(alert("done!"));

@@ -25,6 +25,7 @@ export default function BasketballEdit({ navigation }) {
   const [pic, setpic] = useState("");
   const [link, setlink] = useState("");
   const [price, setprice] = useState("");
+  const [state, setState] = useState([]);
 
   const [idu, setidu] = useState("");
 
@@ -41,6 +42,7 @@ export default function BasketballEdit({ navigation }) {
       price: price,
       link: link,
       id: id,
+      state: state,
     };
 
     addBStadium(Basketball, id).then(alert("done!"));
@@ -56,8 +58,6 @@ export default function BasketballEdit({ navigation }) {
     deleteBStadium(idu).then(alert("done!"));
     setidu("");
   }
-
-
 
   function updateStadium() {
     var football = {
