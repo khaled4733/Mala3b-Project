@@ -201,7 +201,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 50,
     backgroundColor: "#22223b",
-    marginBottom: 15,
   },
   box1: {
     backgroundColor: "#f2e9e4",
