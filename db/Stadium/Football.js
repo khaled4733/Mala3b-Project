@@ -12,9 +12,9 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
-async function addFStadium(Football , id) {
+async function addFStadium(Football, id) {
   try {
-    await setDoc(doc(db, "football" , id), Football);
+    await setDoc(doc(db, "football", id), Football);
     console.log("Document written with ID: ", id);
   } catch (e) {
     console.error("Error adding document: ", e);
@@ -23,19 +23,19 @@ async function addFStadium(Football , id) {
 
 async function deleteFStadium(docId) {
   try {
-      await deleteDoc(doc(db, "football", docId));
-      console.log("Document deleted with ID: ", docId);
+    await deleteDoc(doc(db, "football", docId));
+    console.log("Document deleted with ID: ", docId);
   } catch (error) {
-      console.error("Error deleting document: ", error);
+    console.error("Error deleting document: ", error);
   }
 }
 
-async function updateFStadium(docId , Football) {
+async function updateFStadium(docId, Football) {
   try {
-      await updateDoc(doc(db, "football", docId) , Football);
-      console.log("Document updated with ID: ", docId);
+    await updateDoc(doc(db, "football", docId), Football);
+    console.log("Document updated with ID: ", docId);
   } catch (error) {
-      console.error("Error updateing document: ", error);
+    console.error("Error updateing document: ", error);
   }
 }
 
@@ -49,6 +49,4 @@ async function getFStadium() {
   return stadiumList;
 }
 
-
-
-export { addFStadium, getFStadium, deleteFStadium ,updateFStadium };
+export { addFStadium, getFStadium, deleteFStadium, updateFStadium };

@@ -7,10 +7,17 @@ import {
   TouchableOpacity,
   Linking,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function Stadium({ route, navigation }) {
   let { e: stad } = route.params;
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerLargeTitle: true,
+      headerTitle: stad.name,
+    });
+  }, [navigation]);
 
   function handle() {
     navigation.navigate("ValidationPage", { name: stad.name });

@@ -111,6 +111,26 @@ export default function BasketballEdit({ navigation }) {
     }
   };
 
+  const takePicture = async () => {
+    const result = await ImagePicker.launchCameraAsync({
+      allowsEditing: false,
+    });
+    console.log("result", result);
+    if (!result.cancelled) {
+      setpic1(result.uri);
+    }
+  };
+
+  const takePicture1 = async () => {
+    const result = await ImagePicker.launchCameraAsync({
+      allowsEditing: false,
+    });
+    console.log("result", result);
+    if (!result.cancelled) {
+      setpic1(result.uri);
+    }
+  };
+
   const refRBSheet = useRef();
   const refRBSheet1 = useRef();
 
@@ -151,7 +171,10 @@ export default function BasketballEdit({ navigation }) {
               >
                 Upload Photo
               </Text>
-              <TouchableOpacity style={styles.buttonstyle1}>
+              <TouchableOpacity
+                style={styles.buttonstyle1}
+                onPress={takePicture}
+              >
                 <Text style={styles.buttontext}> Take Photo </Text>
               </TouchableOpacity>
 
@@ -189,7 +212,10 @@ export default function BasketballEdit({ navigation }) {
               >
                 Upload Photo
               </Text>
-              <TouchableOpacity style={styles.buttonstyle1}>
+              <TouchableOpacity
+                style={styles.buttonstyle1}
+                onPress={takePicture}
+              >
                 <Text style={styles.buttontext}> Take Photo </Text>
               </TouchableOpacity>
 
