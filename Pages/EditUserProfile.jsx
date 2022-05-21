@@ -74,6 +74,16 @@ export default function EditUserProfile({ navigation }) {
     }
   };
 
+  const takePicture = async () => {
+    const result = await ImagePicker.launchCameraAsync({
+      allowsEditing: false,
+    });
+    console.log("result", result);
+    if (!result.cancelled) {
+      setpiclink(result.uri);
+    }
+  };
+
   const refRBSheet = useRef();
 
   return (
@@ -112,7 +122,7 @@ export default function EditUserProfile({ navigation }) {
             >
               Upload Photo
             </Text>
-            <TouchableOpacity style={styles.buttonstyle1}>
+            <TouchableOpacity style={styles.buttonstyle1} onPress={takePicture}>
               <Text style={styles.buttontext}> Take Photo </Text>
             </TouchableOpacity>
 
