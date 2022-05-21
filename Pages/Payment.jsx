@@ -18,10 +18,6 @@ import { getTStadium } from "../db/Stadium/Tennis";
 
 export default function Payment({ navigation, route }) {
   let currentUserId;
-  const [name, setName] = useState("");
-  const [cardnumber, setCardNumber] = useState("");
-  const [cvv, setCVV] = useState("");
-  const [date, setDate] = useState("");
   const [Fstadium, setFStadium] = useState([]);
   const [Bstadium, setBStadium] = useState([]);
   const [Tstadium, setTStadium] = useState([]);
@@ -29,7 +25,7 @@ export default function Payment({ navigation, route }) {
   let currentFStadPrice;
   let currentBStadPrice;
   let currentTStadPrice;
-  let {stadName} = route.params;
+  let {id:id,stadName:stadName,day:day,stDate:stDate,edDate:edDate,} = route.params;
 
   // console.log(user)
 
@@ -77,16 +73,20 @@ export default function Payment({ navigation, route }) {
       }
     })
 
+
+
     getBStadium().then((data) => {
       for (let i = 0; i < data.length; i++) {
         if (data[i].name === stadName) {
           console.log("Bstad name in db is " + data[i].name)
           console.log("Bstad price in db is " + data[i].price)
           currentBStadPrice = data[i].price
-          console.log("Bstad price locally is " + currentFStadPrice)
+          console.log("Bstad price locally is " + currentBStadPrice)
         }
       }
     })
+
+
 
     getTStadium().then((data) => {
       for (let i = 0; i < data.length; i++) {
@@ -94,7 +94,7 @@ export default function Payment({ navigation, route }) {
           console.log("Tstad name in db is " + data[i].name)
           console.log("Tstad price in db is " + data[i].price)
           currentTStadPrice = data[i].price
-          console.log("Tstad price locally is " + currentFStadPrice)
+          console.log("Tstad price locally is " + currentTStadPrice)
         }
       }
     })
@@ -112,19 +112,25 @@ export default function Payment({ navigation, route }) {
               if (Fstadium[j].name !== undefined) {   //to remove error "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'name')"
                 if (stadName === Fstadium[j].name) {
                   if (currentFStadPrice > users[i].balance) {
+                    console.log("Fstadium[j] before pop",Fstadium[j].state)
                     alert("you dont have enough money") // ASK doc -> not working
-                    Fstadium[j].state.pop();
-                    updateFootball(Fstadium[i]);
+                    // Fstadium[j].state.pop();
+                    // console.log("Fstadium[j] after pop",Fstadium[j].state)
+                    // updateFootball(Fstadium[i]);
                     navigation.goBack();
                     break;
                   } else {
                     console.log("currentFStadPrice is : ",currentFStadPrice)
                     console.log("users[i].balance is : ",users[i].balance)
                     users[i].balance = users[i].balance - currentFStadPrice;
-                    updateUser(users[i]).then(() => alert("user's balance has been updated"));
+                    Fstadium[j].state.push({id,day,stDate,edDate})
+                    updateFootball(Fstadium[j]) //update date in state
+                    updateUser(users[i]).then(() => alert("user's balance has been updated")); //update balance
                     navigation.goBack();
                   }
                 }
+
+
               } else if (stadName === Bstadium[i].name) {
                 if (currentBStadPrice > users[i].balance) {
                   alert("you dont have enough money")
@@ -159,35 +165,10 @@ export default function Payment({ navigation, route }) {
     })
   }
   return (
+
     <View style={styles.container}>
       <View style={styles.screen}>
         <Image source={Logo} style={styles.image} />
-      </View>
-      <View style={styles.format}>
-        <TextInput
-          style={styles.input}
-          placeholder="Card Name"
-          onChangeText={setName}
-          keyboardType="default"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Card Number"
-          onChangeText={setCardNumber}
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="MM/YY"
-          onChangeText={setDate}
-          keyboardType="default"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="CVV"
-          onChangeText={setCVV}
-          keyboardType="numeric"
-        />
       </View>
       <TouchableOpacity style={styles.buttonstyle} onPress={Handler}>
         <Text style={styles.buttontext}>Pay</Text>

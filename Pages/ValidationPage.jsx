@@ -70,6 +70,8 @@ export default function ValidationPage({ navigation, route }) {
       alert("data is required");
     }
   }
+
+
   return (
     <View style={styles.container}>
       <View style={styles.component}>
