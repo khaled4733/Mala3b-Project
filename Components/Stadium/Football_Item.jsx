@@ -22,7 +22,7 @@ export default function Football_Item({ e , navigation} , key ) {
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => {
-                            navigation.navigate('Football_Details',{ e: e.name })
+                            navigation.navigate('Football_Details',{ e: e })
                             }
                         }
                     >

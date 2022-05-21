@@ -55,7 +55,7 @@ export default function Basketball({ navigation }) {
 
       <View>
         {filteredData.map((item, index) => {
-          return <Baskball_tItem e={item} key={index} navigation={navigation} />;
+          return <Baskball_Item e={item} key={index} navigation={navigation} />;
         })}
       </View>
     </ScrollView>

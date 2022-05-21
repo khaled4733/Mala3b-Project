@@ -4,7 +4,7 @@ import {
     Text,
     View,
     TextInput,
-    ScrollView, Image,Button
+    ScrollView, Image, Button, Dimensions
 } from "react-native";
 import React, {useEffect, useState} from "react";
 // import {addFStadium, deleteFStadium, getFStadium} from "../db/Stadium/Football";
@@ -52,10 +52,8 @@ export default function TennisValidationPage ({navigation, route}) {
                             }
                             if (flag) { //if flag is available i.e. "true", add userId with the "date" that he
                                 getUserUId().then((id) => { // gets id of current user in "id"
-                                    data[i].state.push({day, stDate, edDate, id}); //note that we made "id" same as "document ID" manually
-                                    updateTennis(data[i]); //!NOTE! we want to updateTennis when we press "pay"-> in "Payment.jsx" no here
+                                    navigation.navigate('Payment', {stadName,day, stDate, edDate, id});
                                 });
-                                navigation.navigate('Payment', {stadName});
                             }
                             break;
                         }
@@ -72,22 +70,82 @@ export default function TennisValidationPage ({navigation, route}) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.header}> Enter Your Booking Club </Text>
-            <ScrollView>
-                <TextInput placeholder="Enter day" onChangeText={setDay}/>
-                <TextInput placeholder="Enter start date" onChangeText={setStDate}/>
-                <TextInput placeholder="Enter end date" onChangeText={setEdDate}/>
-                <Button title={"submit"} onPress={handel}/>
+            <View style={styles.component}>
+                <TextInput
+                    style={styles.textinput}
+                    placeholder="Enter the day"
+                    onChangeText={setDay}
+                    keyboardType="default"
+                    placeholderTextColor={"#22223b"}
+                />
 
-            </ScrollView>
+                <TextInput
+                    style={styles.textinput}
+                    placeholder="Enter start time"
+                    onChangeText={setStDate}
+                    keyboardType="default"
+                    placeholderTextColor={"#22223b"}
+                />
 
+                <TextInput
+                    style={styles.textinput}
+                    placeholder="Enter end time"
+                    onChangeText={setEdDate}
+                    keyboardType="default"
+                    placeholderTextColor={"#22223b"}
+                />
+
+                <TouchableOpacity style={styles.button} onPress={handel}>
+                    <Text style={styles.buttontext}>Book</Text>
+                </TouchableOpacity>
+            </View>
         </View>
-
     );
 }
-    const styles = StyleSheet.create({
-    container:{
-        alignItems:"center",
-        alignContent:"center"
-    }
-    })
+const cardwidth = Math.round(Dimensions.get("window").width);
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#f2e9e4",
+    },
+    component: {
+        flex: 1,
+        backgroundColor: "#22223b",
+        borderRadius: 20,
+        width: cardwidth - 100,
+        marginVertical: 60,
+        alignItems: "center",
+        justifyContent: "center",
+        shadowColor: "#000000",
+        shadowOffset: {
+            width: 5,
+            height: 5,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3,
+    },
+    textinput: {
+        marginBottom: 20,
+        paddingLeft: 5,
+        width: "75%",
+        height: 40,
+        backgroundColor: "#f2e9e4",
+        borderRadius: 15,
+    },
+    buttontext: {
+        color: "#22223b",
+        fontSize: 15,
+        fontWeight: "500",
+    },
+    button: {
+        backgroundColor: "#f2e9e4",
+        marginTop: 20,
+        width: 120,
+        height: 50,
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+});

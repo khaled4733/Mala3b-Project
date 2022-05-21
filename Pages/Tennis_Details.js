@@ -14,7 +14,7 @@ export default function Tennis_Details({ route, navigation }) {
 
     function handle() {
         console.log("entered handle in Stadium.js")
-        navigation.navigate("TennisValidationPage", { name: stad });
+        navigation.navigate("TennisValidationPage", { name: stad.name });
     }
 
     function location() {

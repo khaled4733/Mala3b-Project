@@ -12,7 +12,15 @@ import React, { useState, useEffect } from "react";
 import Logo from "../assets/2511582.jpg";
 import { deleteFStadium, getFStadium } from "../db/Stadium/Football";
 import { getUserUId } from "../db/Auth";
-import {addUsersToDocuments, updateFootball, test, getUsers,updateUser} from "../db/User";
+import {
+  addUsersToDocuments,
+  updateFootball,
+  test,
+  getUsers,
+  updateUser,
+  updateBasketball,
+  updateTennis
+} from "../db/User";
 import { getBStadium } from "../db/Stadium/Basketball";
 import { getTStadium } from "../db/Stadium/Tennis";
 
@@ -99,6 +107,12 @@ export default function Payment({ navigation, route }) {
       }
     })
 
+
+
+
+
+
+
     //update current user balance
     getUsers().then((users) => {
       getUserUId().then((userId) => {
@@ -126,7 +140,7 @@ export default function Payment({ navigation, route }) {
                     Fstadium[j].state.push({id,day,stDate,edDate})
                     updateFootball(Fstadium[j]) //update date in state
                     updateUser(users[i]).then(() => alert("user's balance has been updated")); //update balance
-                    navigation.goBack();
+                    navigation.navigate('Home');
                   }
                 }
 
@@ -134,28 +148,30 @@ export default function Payment({ navigation, route }) {
               } else if (stadName === Bstadium[i].name) {
                 if (currentBStadPrice > users[i].balance) {
                   alert("you dont have enough money")
-                  Bstadium[j].state.pop();
-                  updateBasketball(Bstadium[j]);
                   navigation.goBack();
                   break;
                 } else {
                   console.log(currentBStadPrice)
                   users[i].balance = users[i].balance - currentBStadPrice;
+                  Bstadium[j].state.push({id,day,stDate,edDate})
+                  updateBasketball(Bstadium[j]) //update date in state
                   updateUser(users[i]).then(() => alert("user's balance has been updated"));
-                  navigation.goBack();
+                  navigation.navigate('Home');
+
                 }
               } else if (stadName === Tstadium[j].name) {
                 if (currentTStadPrice > users[i].balance) {
                   alert("you dont have enough money")
-                  Tstadium[j].state.pop();
-                  updateTennis(Tstadium[j]);
                   navigation.goBack();
                   break;
                 } else {
                   console.log(currentTStadPrice)
                   users[i].balance = users[i].balance - currentTStadPrice;
+                  Tstadium[j].state.push({id,day,stDate,edDate})
+                  updateTennis(Tstadium[j])
                   updateUser(users[i]).then(() => alert("user's balance has been updated"));
-                  navigation.goBack();
+                  navigation.navigate('Home');
+
                 }
               }
             }

@@ -14,7 +14,7 @@ export default function Basketball_Details({ route, navigation }) {
 
     function handle() {
         console.log("entered handle in Stadium.js")
-        navigation.navigate("BasketballValidationPage", { name: stad });
+        navigation.navigate("BasketballValidationPage", { name: stad.name });
     }
 
     function location() {
