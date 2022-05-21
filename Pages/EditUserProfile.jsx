@@ -42,7 +42,7 @@ export default function EditUserProfile({ navigation }) {
       {
         text: "Ok",
         onPress: () => {
-          editUser(idu, fullname, phone, email, piclink).then(
+          editUser(idu, fullname, phone, piclink).then(
             navigation.navigate("Profile")
           );
         },

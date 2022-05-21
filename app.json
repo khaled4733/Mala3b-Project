@@ -20,7 +20,8 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.khaled473.CS303Spring2022"
     },
     "web": {
       "favicon": "./assets/favicon.png"

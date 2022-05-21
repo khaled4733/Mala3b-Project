@@ -64,12 +64,11 @@ async function updateFAvailable(tempDoc) {
   }
 }
 
-async function editUser(docId, fullname, phone, email, piclink) {
+async function editUser(docId, fullname, phone, piclink) {
   try {
     await updateDoc(doc(db, "users", docId), {
       fullname: fullname,
       phone: phone,
-      email: email,
       piclink: piclink,
     });
     console.log("Document updated with ID: ", docId);

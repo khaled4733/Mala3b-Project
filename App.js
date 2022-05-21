@@ -23,7 +23,6 @@ import TennisEdit from "./Pages/AdminArea/TennisEdit";
 import Stadium from "./Pages/Stadium";
 import ValidationPage from "./Pages/ValidationPage";
 import WelcomePage from "./Pages/WelcomePage";
-import Favourite from "./Pages/Favourite";
 import EditProfile from "./Pages/EditUserProfile";
 import UserEdit from "./Pages/AdminArea/UserEdit";
 
@@ -254,22 +253,6 @@ function BottomTab({ user }) {
           ),
         }}
       />
-
-      <Tab.Screen
-        name={"Favourite"}
-        component={Favourite}
-        initialParams={{ user }}
-        options={{
-          headerStyle: {
-            backgroundColor: "#FFF",
-          },
-          headerTintColor: "#000000",
-          tabBarLabel: "Favourite",
-          tabBarIcon: () => (
-            <MaterialCommunityIcons name="heart" color={"#000000"} size={30} />
-          ),
-        }}
-      ></Tab.Screen>
 
       <Tab.Screen
         name={"Profile"}

@@ -122,16 +122,6 @@ export default function Profile({ navigation, route }) {
       </View>
 
       <View style={styles.row}>
-        <Icon name="calendar-month-outline" color={"#f2e9e4"} size={30} />
-        <View style={styles.box}>
-          <Text style={{ color: "#22223b", marginLeft: 10, fontSize: 15 }}>
-            {" "}
-            {user.email}{" "}
-          </Text>
-        </View>
-      </View>
-
-      <View style={styles.row}>
         <Icon name="cellphone" color={"#f2e9e4"} size={30} />
         <View style={styles.box}>
           <Text style={{ color: "#22223b", marginLeft: 10, fontSize: 15 }}>
