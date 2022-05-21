@@ -141,7 +141,10 @@ export default function BasketballEdit({ navigation }) {
           <Text style={styles.title}>add Stadium</Text>
 
           <View style={styles.format}>
-            <TouchableOpacity onPress={() => refRBSheet.current.open()}>
+            <TouchableOpacity
+              style={styles.avatar}
+              onPress={() => refRBSheet.current.open()}
+            >
               <Image source={{ uri: pic }} style={styles.userimage} />
             </TouchableOpacity>
           </View>
@@ -308,7 +311,10 @@ export default function BasketballEdit({ navigation }) {
           <Text style={styles.title}>update Stadium</Text>
 
           <View style={styles.format}>
-            <TouchableOpacity onPress={() => refRBSheet1.current.open()}>
+            <TouchableOpacity
+              style={styles.avatar}
+              onPress={() => refRBSheet1.current.open()}
+            >
               <Image source={{ uri: pic1 }} style={styles.userimage} />
             </TouchableOpacity>
           </View>
@@ -439,6 +445,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
     alignItems: "center",
+    justifyContent: "center",
+  },
+  avatar: {
+    height: 150,
+    width: 150,
+    borderRadius: 75,
+    backgroundColor: "#f2e9e4",
     justifyContent: "center",
   },
 });

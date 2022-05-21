@@ -15,13 +15,12 @@ import { editUser } from "../db/User";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { getUserUId } from "../db/Auth";
 import * as ImagePicker from "expo-image-picker";
-import avatar from "../assets/Untitled-1111.png";
 
 export default function EditUserProfile({ navigation }) {
   const [fullname, setfullname] = useState("");
   const [phone, setphone] = useState("");
   const [idu, setIdu] = useState("");
-  const [piclink, setpiclink] = useState(avatar);
+  const [piclink, setpiclink] = useState("");
 
   var user = {
     fullname: "",
@@ -94,6 +93,7 @@ export default function EditUserProfile({ navigation }) {
 
         <View style={styles.format}>
           <TouchableOpacity
+            style={styles.avatar}
             onPress={() => {
               refRBSheet.current.open();
             }}
@@ -241,6 +241,13 @@ const styles = StyleSheet.create({
     height: 150,
     width: 150,
     borderRadius: 75,
+    justifyContent: "center",
+  },
+  avatar: {
+    height: 150,
+    width: 150,
+    borderRadius: 75,
+    backgroundColor: "#f2e9e4",
     justifyContent: "center",
   },
 });
