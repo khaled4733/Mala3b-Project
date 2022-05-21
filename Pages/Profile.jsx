@@ -14,6 +14,7 @@ import React, { useState, useEffect } from "react";
 import { getUserById, getUsers } from "../db/User";
 import { getUserUId } from "../db/Auth";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import avatar from "../assets/Untitled-1111.png";
 
 export default function Profile({ navigation, route }) {
   const [users, setUsers] = useState([]);

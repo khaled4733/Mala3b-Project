@@ -15,12 +15,13 @@ import { editUser } from "../db/User";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { getUserUId } from "../db/Auth";
 import * as ImagePicker from "expo-image-picker";
+import avatar from "../assets/Untitled-1111.png";
 
 export default function EditUserProfile({ navigation }) {
   const [fullname, setfullname] = useState("");
   const [phone, setphone] = useState("");
   const [idu, setIdu] = useState("");
-  const [piclink, setpiclink] = useState("");
+  const [piclink, setpiclink] = useState(avatar);
 
   var user = {
     fullname: "",
@@ -92,7 +93,11 @@ export default function EditUserProfile({ navigation }) {
         <Text style={styles.title}>update user info</Text>
 
         <View style={styles.format}>
-          <TouchableOpacity onPress={() => refRBSheet.current.open()}>
+          <TouchableOpacity
+            onPress={() => {
+              refRBSheet.current.open();
+            }}
+          >
             <Image source={{ uri: piclink }} style={styles.userimage} />
           </TouchableOpacity>
         </View>

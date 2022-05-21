@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
+  TextInput,
 } from "react-native";
 import { React, useState, useEffect } from "react";
 import Card from "../Components/Stadium/CardComponent";
@@ -12,20 +12,51 @@ import { getTStadium } from "../db/Stadium/Tennis";
 
 export default function Football({ navigation }) {
   const [stadium, setStadium] = useState([]);
+  const [searchText, onChangeSearch] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
+
   useEffect(() => {
     getTStadium().then((data) => {
       setStadium(data);
+      setFilteredData(data);
     });
   }, []);
+
+  useEffect(() => {
+    const newData = stadium.filter((item) =>
+      item.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    if (searchText === "") {
+      return setFilteredData(stadium);
+    } else {
+      return setFilteredData(newData);
+    }
+  }, [searchText]);
+
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.titlealign}>
-        <Text style={styles.title}> Search Component </Text>
+      <View style={{ paddingHorizontal: 10 }}>
+        <TextInput
+          style={{
+            height: 50,
+            backgroundColor: "#FFF",
+            borderWidth: 1,
+            margin: 10,
+            paddingLeft: 15,
+            borderRadius: 10,
+            color: "#22223b",
+          }}
+          onChangeText={(newText) => onChangeSearch(newText)}
+          placeholder="Search..."
+          placeholderTextColor={"#22223b"}
+        />
       </View>
 
-      {stadium.map((item, index) => {
-        return <Card e={item} key={index} navigation={navigation} />;
-      })}
+      <View>
+        {filteredData.map((item, index) => {
+          return <Card e={item} key={index} navigation={navigation} />;
+        })}
+      </View>
     </ScrollView>
   );
 }

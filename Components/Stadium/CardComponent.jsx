@@ -10,9 +10,9 @@ import {
 import React, { useState } from "react";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-export default function CardComponent({ e, navigation }) {
+export default function CardComponent({ e, navigation }, key) {
   return (
-    <View style={styles.Container}>
+    <View key={key} style={styles.Container}>
       <View style={styles.CardContainer}>
         <ImageBackground
           source={{ uri: e.pic }}
