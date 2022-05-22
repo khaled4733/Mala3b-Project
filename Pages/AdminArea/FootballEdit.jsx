@@ -25,6 +25,7 @@ const FootballEdit = ({ navigation }) => {
   const [pic, setpic] = useState("");
   const [link, setlink] = useState("");
   const [price, setprice] = useState("");
+  const [state, setState] = useState([]);
 
   const [idu, setidu] = useState("");
 
@@ -42,6 +43,7 @@ const FootballEdit = ({ navigation }) => {
       price: price,
       link: link,
       id: id,
+      state: state,
     };
 
     addFStadium(football, id).then(alert("done!"));
