@@ -45,7 +45,7 @@ export default function BasketballEdit({ navigation }) {
       state: state,
     };
 
-    addBStadium(Basketball, id).then(alert("done!"));
+    addBStadium(Basketball, id).then(navigation.goBack(), alert("done!"));
     console.log("football", Basketball);
     setid("");
     setname("");
@@ -55,7 +55,7 @@ export default function BasketballEdit({ navigation }) {
   }
 
   function deleteStadium() {
-    deleteBStadium(idu).then(alert("done!"));
+    deleteBStadium(idu).then(navigation.goBack(), alert("done!"));
     setidu("");
   }
 
@@ -67,7 +67,7 @@ export default function BasketballEdit({ navigation }) {
       link: link1,
     };
 
-    updateBStadium(id1, football).then(alert("done!"));
+    updateBStadium(id1, football).then(navigation.goBack(), alert("done!"));
     setid1("");
     setname1("");
     setpic1("");

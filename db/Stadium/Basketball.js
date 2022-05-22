@@ -1,16 +1,25 @@
 import { db } from "../Config";
-import { updateDoc,addDoc, collection, getDocs, getFirestore, setDoc, doc, query, where, deleteDoc } from "firebase/firestore";
+import {
+  updateDoc,
+  addDoc,
+  collection,
+  getDocs,
+  getFirestore,
+  setDoc,
+  doc,
+  query,
+  where,
+  deleteDoc,
+} from "firebase/firestore";
 
-
-async function addBStadium(BasketBall , id) {
+async function addBStadium(BasketBall, id) {
   try {
-    await setDoc(doc(db, "basketball" , id), BasketBall);
+    await setDoc(doc(db, "basketball", id), BasketBall);
     console.log("Document written with ID: ", id);
   } catch (e) {
     console.error("Error adding document: ", e);
   }
 }
-
 
 async function getBStadium() {
   const stadiumsCol = collection(db, "basketball");
@@ -21,7 +30,6 @@ async function getBStadium() {
   console.log(stadiumList);
   return stadiumList;
 }
-
 
 async function deleteBStadium(id) {
   try {

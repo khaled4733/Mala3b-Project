@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 import React, { useState } from "react";
-import { updateUser, deleteUser } from "../../db/User";
+import { editUserbalance, deleteUser } from "../../db/User";
 
 const UserEdit = ({ navigation }) => {
   const [id, setid] = useState("");
@@ -20,7 +20,7 @@ const UserEdit = ({ navigation }) => {
   // const [error, setError] = useState("");
 
   function updatebalance() {
-    updateUser(id, balance).then(alert("done!"));
+    editUserbalance(id, balance).then(alert("done!"));
     setid("");
     setBalance("");
   }

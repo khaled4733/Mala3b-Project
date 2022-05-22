@@ -64,7 +64,6 @@ async function updateFootball(tempDoc) {
   }
 }
 
-
 async function updateBasketball(tempDoc) {
   try {
     console.log(tempDoc);
@@ -72,7 +71,6 @@ async function updateBasketball(tempDoc) {
   } catch (e) {
     console.error(e);
   }
-
 }
 
 async function updateTennis(tempDoc) {
@@ -82,7 +80,6 @@ async function updateTennis(tempDoc) {
   } catch (e) {
     console.error(e);
   }
-
 }
 
 async function editUser(docId, fullname, phone, piclink) {
@@ -116,6 +113,17 @@ async function updateUser(tempUser) {
   }
 }
 
+async function editUserbalance(docId, balance) {
+  try {
+    await updateDoc(doc(db, "users", docId), {
+      balance: balance,
+    });
+    console.log("Document updated with ID: ", docId);
+  } catch (error) {
+    console.error("Error updateing document: ", error);
+  }
+}
+
 export {
   getUsers,
   addUser,
@@ -126,5 +134,6 @@ export {
   deleteUser,
   updateUser,
   updateBasketball,
-    updateTennis
+  updateTennis,
+  editUserbalance,
 };

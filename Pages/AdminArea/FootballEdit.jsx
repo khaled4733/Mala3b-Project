@@ -46,7 +46,7 @@ const FootballEdit = ({ navigation }) => {
       state: state,
     };
 
-    addFStadium(football, id).then(alert("done!"));
+    addFStadium(football, id).then(navigation.goBack(), alert("done!"));
     console.log("football", football);
     setid("");
     setname("");
@@ -56,7 +56,7 @@ const FootballEdit = ({ navigation }) => {
   }
 
   function deleteStadium() {
-    deleteFStadium(idu).then(alert("done!"));
+    deleteFStadium(idu).then(navigation.goBack(), alert("done!"));
     setidu("");
   }
 
@@ -68,7 +68,7 @@ const FootballEdit = ({ navigation }) => {
       link: link1,
     };
 
-    updateFStadium(id1, football).then(alert("done!"));
+    updateFStadium(id1, football).then(navigation.goBack(), alert("done!"));
     setid1("");
     setname1("");
     setpic1("");

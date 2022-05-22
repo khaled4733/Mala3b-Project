@@ -46,7 +46,7 @@ export default function TennisEdit({ navigation }) {
       state: state,
     };
 
-    addTStadium(tennis, id).then(alert("done!"));
+    addTStadium(tennis, id).then(navigation.goBack(), alert("done!"));
     console.log("football", tennis);
     setid("");
     setname("");
@@ -56,7 +56,7 @@ export default function TennisEdit({ navigation }) {
   }
 
   function deleteStadium() {
-    deleteTStadium(idu).then(alert("done!"));
+    deleteTStadium(idu).then(navigation.goBack(), alert("done!"));
     setidu("");
   }
 
@@ -68,7 +68,7 @@ export default function TennisEdit({ navigation }) {
       link: link1,
     };
 
-    updateTStadium(id1, football).then(alert("done!"));
+    updateTStadium(id1, football).then(navigation.goBack(), alert("done!"));
     setid1("");
     setname1("");
     setpic1("");
