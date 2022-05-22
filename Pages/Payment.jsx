@@ -72,8 +72,7 @@ export default function Payment({ navigation, route }) {
   }, []);
 
   const Handler = () => {
-    /*Handle Football*/
-    console.log("here in paymethod");
+
     //get currentFStadPrice
     getFStadium().then((data) => {
       for (let i = 0; i < data.length; i++) {
@@ -100,13 +99,16 @@ export default function Payment({ navigation, route }) {
     getTStadium().then((data) => {
       for (let i = 0; i < data.length; i++) {
         if (data[i].name === stadName) {
-          console.log("Tstad name in db is " + data[i].name);
-          console.log("Tstad price in db is " + data[i].price);
-          currentTStadPrice = data[i].price;
-          console.log("Tstad price locally is " + currentTStadPrice);
+          console.log("Tstad name in db is " + data[i].name)
+          console.log("Tstad name in locally is " + stadName)
+          currentTStadPrice = data[i].price
+          console.log("Tstad price in db is " + data[i].price)
+          console.log("Tstad price locally is " + currentTStadPrice)
         }
       }
-    });
+    })
+
+
 
     //update current user balance
     getUsers().then((users) => {
@@ -122,54 +124,64 @@ export default function Payment({ navigation, route }) {
                 //to remove error "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'name')"
                 if (stadName === Fstadium[j].name) {
                   if (currentFStadPrice > users[i].balance) {
-                    console.log("Fstadium[j] before pop", Fstadium[j].state);
-                    alert("you dont have enough money"); // ASK doc -> not working
+                    alert("you dont have enough money") // ASK doc -> not working
                     // Fstadium[j].state.pop();
                     // console.log("Fstadium[j] after pop",Fstadium[j].state)
                     // updateFootball(Fstadium[i]);
                     navigation.goBack();
                     break;
                   } else {
-                    console.log("currentFStadPrice is : ", currentFStadPrice);
-                    console.log("users[i].balance is : ", users[i].balance);
+
+                    console.log("currentFStadPrice is : ", currentFStadPrice)
+                    console.log("users[i].balance is : ", users[i].balance)
                     users[i].balance = users[i].balance - currentFStadPrice;
-                    Fstadium[j].state.push({ id, day, stDate, edDate });
-                    updateFootball(Fstadium[j]); //update date in state
-                    updateUser(users[i]).then(() =>
-                      alert("user's balance has been updated")
-                    ); //update balance
-                    navigation.navigate("Home");
+                    Fstadium[j].state.push({id, day, stDate, edDate})
+                    updateFootball(Fstadium[j]) //update date in state
+                    updateUser(users[i]).then(() => alert("user's balance has been updated")); //update balance
+                    navigation.navigate('Home');
                   }
                 }
-              } else if (stadName === Bstadium[i].name) {
-                if (currentBStadPrice > users[i].balance) {
-                  alert("you dont have enough money");
-                  navigation.goBack();
-                  break;
-                } else {
-                  console.log(currentBStadPrice);
-                  users[i].balance = users[i].balance - currentBStadPrice;
-                  Bstadium[j].state.push({ id, day, stDate, edDate });
-                  updateBasketball(Bstadium[j]); //update date in state
-                  updateUser(users[i]).then(() =>
-                    alert("user's balance has been updated")
-                  );
-                  navigation.navigate("Home");
+              }
+            }
+
+            for (let j = 0; j < Bstadium.length; j++) {
+              if (stadName === Bstadium[j].name) {
+                if (Bstadium[j].name !== undefined) {   //to remove error "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'name')"
+                  if (currentBStadPrice > users[i].balance) {
+                    alert("you dont have enough money")
+                    navigation.goBack();
+                    break;
+                  } else {
+                    console.log(currentBStadPrice)
+                    users[i].balance = users[i].balance - currentBStadPrice;
+                    Bstadium[j].state.push({id, day, stDate, edDate})
+                    updateBasketball(Bstadium[j]) //update date in state
+                    updateUser(users[i]).then(() => alert("user's balance has been updated"));
+                    navigation.navigate('Home');
+
+                  }
                 }
-              } else if (stadName === Tstadium[j].name) {
-                if (currentTStadPrice > users[i].balance) {
-                  alert("you dont have enough money");
-                  navigation.goBack();
-                  break;
-                } else {
-                  console.log(currentTStadPrice);
-                  users[i].balance = users[i].balance - currentTStadPrice;
-                  Tstadium[j].state.push({ id, day, stDate, edDate });
-                  updateTennis(Tstadium[j]);
-                  updateUser(users[i]).then(() =>
-                    alert("user's balance has been updated")
-                  );
-                  navigation.navigate("Home");
+              }
+            }
+
+            for (let j = 0; j < Tstadium.length; j++) {
+              if (stadName === Tstadium[j].name) {
+                console.log("tennis (stadName) is : ", stadName)
+                console.log("tennis (Tstadium[j].name) is : ", Tstadium[j].name)
+                if (Tstadium[j].name !== undefined) {   //to remove error "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'name')"
+                  if (currentTStadPrice > users[i].balance) {
+                    alert("you dont have enough money")
+                    navigation.goBack();
+                    break;
+                  } else {
+                    console.log(currentTStadPrice)
+                    users[i].balance = users[i].balance - currentTStadPrice;
+                    Tstadium[j].state.push({id, day, stDate, edDate})
+                    updateTennis(Tstadium[j])
+                    updateUser(users[i]).then(() => alert("user's balance has been updated"));
+                    navigation.navigate('Home');
+
+                  }
                 }
               }
             }

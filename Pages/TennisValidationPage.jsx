@@ -29,6 +29,7 @@ export default function TennisValidationPage ({navigation, route}) {
             console.log('Inside handle()', stadName);
         /*Handle tennis*/
             getTStadium().then((data) => {
+                console.log("tennis stad name is : ",stadName)
                 if (stDate !== '' && edDate !== '' && day !== '' && stDate !== edDate) {
                     console.log('number of Tstad = ', data.length);
                     for (let i = 0; i < data.length; i++) {
