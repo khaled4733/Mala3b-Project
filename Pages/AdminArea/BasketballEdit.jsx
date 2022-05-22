@@ -17,6 +17,7 @@ import {
   addBStadium,
   deleteBStadium,
   updateBStadium,
+  getBStadium,
 } from "../../db/Stadium/Basketball";
 
 export default function BasketballEdit({ navigation }) {
@@ -45,7 +46,7 @@ export default function BasketballEdit({ navigation }) {
       state: state,
     };
 
-    addBStadium(Basketball, id).then(navigation.goBack(), alert("done!"));
+    addBStadium(Basketball, id).then(alert("done!"));
     console.log("football", Basketball);
     setid("");
     setname("");
@@ -55,7 +56,7 @@ export default function BasketballEdit({ navigation }) {
   }
 
   function deleteStadium() {
-    deleteBStadium(idu).then(navigation.goBack(), alert("done!"));
+    deleteBStadium(idu).then(alert("done!"));
     setidu("");
   }
 
@@ -67,7 +68,7 @@ export default function BasketballEdit({ navigation }) {
       link: link1,
     };
 
-    updateBStadium(id1, football).then(navigation.goBack(), alert("done!"));
+    updateBStadium(id1, football).then(alert("done!"));
     setid1("");
     setname1("");
     setpic1("");
@@ -219,7 +220,7 @@ export default function BasketballEdit({ navigation }) {
               </Text>
               <TouchableOpacity
                 style={styles.buttonstyle1}
-                onPress={takePicture}
+                onPress={takePicture1}
               >
                 <Text style={styles.buttontext}> Take Photo </Text>
               </TouchableOpacity>

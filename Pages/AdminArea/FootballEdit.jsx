@@ -17,6 +17,7 @@ import {
   addFStadium,
   deleteFStadium,
   updateFStadium,
+  getFStadium,
 } from "../../db/Stadium/Football";
 
 const FootballEdit = ({ navigation }) => {
@@ -34,7 +35,14 @@ const FootballEdit = ({ navigation }) => {
   const [pic1, setpic1] = useState("");
   const [link1, setlink1] = useState("");
   const [price1, setprice1] = useState("");
-  // const [error, setError] = useState("");
+
+  const [stadiums, setStadiums] = useState("");
+
+  useEffect(() => {
+    getFStadium().then((data) => {
+      setStadiums(data);
+    });
+  }, []);
 
   function addfootball() {
     var football = {
@@ -46,17 +54,25 @@ const FootballEdit = ({ navigation }) => {
       state: state,
     };
 
-    addFStadium(football, id).then(navigation.goBack(), alert("done!"));
-    console.log("football", football);
-    setid("");
-    setname("");
-    setpic("");
-    setlink("");
-    setprice("");
+    {
+      // stadiums.map((item, index) => {
+      //   if (id == item.id) {
+      //     alert("this id already taken");
+      //   }
+      // });
+
+      addFStadium(football, id).then(alert("done!"));
+      console.log("football", football);
+      setid("");
+      setname("");
+      setpic("");
+      setlink("");
+      setprice("");
+    }
   }
 
   function deleteStadium() {
-    deleteFStadium(idu).then(navigation.goBack(), alert("done!"));
+    deleteFStadium(idu).then(alert("done!"));
     setidu("");
   }
 
@@ -68,7 +84,7 @@ const FootballEdit = ({ navigation }) => {
       link: link1,
     };
 
-    updateFStadium(id1, football).then(navigation.goBack(), alert("done!"));
+    updateFStadium(id1, football).then(alert("done!"));
     setid1("");
     setname1("");
     setpic1("");
