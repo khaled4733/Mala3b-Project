@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: mala3b-frontend
+    env: node
+    buildCommand: CI=false npm run build
+    startCommand: npx serve -s build
+    buildFilter:
+      paths:
+        - package.json
+        - package-lock.json
+        - src/**
+        - public/**
