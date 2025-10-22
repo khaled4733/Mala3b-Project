@@ -1,0 +1,17 @@
+{
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "lang": "en",
+  "name": "CS303Spring2022",
+  "short_name": "CS303Spring2022",
+  "start_url": "/?utm_source=web_app_manifest",
+  "orientation": "portrait",
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "http://play.google.com/store/apps/details?id=com.khaled473.CS303Spring2022",
+      "id": "com.khaled473.CS303Spring2022"
+    }
+  ],
+  "prefer_related_applications": true
+}

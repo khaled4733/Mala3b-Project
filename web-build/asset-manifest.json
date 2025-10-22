@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.js": "/static/js/main.bed408d7.js",
+    "static/js/608.77fd7bbb.js": "/static/js/608.77fd7bbb.js",
+    "static/media/MaterialCommunityIcons.ttf": "/static/media/MaterialCommunityIcons.a7629910d13716b7080c.ttf",
+    "static/media/Untitled-1.png": "/static/media/Untitled-1.6d12f6bde72f255d9a6c.png",
+    "static/media/2511582.jpg": "/static/media/2511582.9239bcc264ea4723cea9.jpg",
+    "static/media/Untitled-3.png": "/static/media/Untitled-3.708cf7eee3b086e0ee3b.png",
+    "static/media/Untitled-2.png": "/static/media/Untitled-2.e92df0a83fc86b8fff83.png",
+    "static/media/Untitled-1111.png": "/static/media/Untitled-1111.c526a800571d0c5f8c5d.png",
+    "static/media/OIP.jpg": "/static/media/OIP.78c42e81c64aeb06cd7a.jpg",
+    "favicon.ico": "/favicon.ico",
+    "index.html": "/index.html",
+    "favicon-32.png": "/favicon-32.png",
+    "favicon-16.png": "/favicon-16.png",
+    "manifest.json": "/manifest.json",
+    "serve.json": "/serve.json",
+    "main.bed408d7.js.map": "/static/js/main.bed408d7.js.map",
+    "608.77fd7bbb.js.map": "/static/js/608.77fd7bbb.js.map"
+  },
+  "entrypoints": [
+    "static/js/608.77fd7bbb.js",
+    "static/js/main.bed408d7.js"
+  ]
+}
