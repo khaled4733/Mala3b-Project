@@ -4,6 +4,7 @@
     "slug": "CS303Spring2022",
     "version": "1.0.0",
     "orientation": "portrait",
+    "platforms": ["ios", "android", "web"],
     "splash": {
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
@@ -24,6 +25,7 @@
       "package": "com.khaled473.CS303Spring2022"
     },
     "web": {
+      "bundler": "metro",
       "favicon": "./assets/favicon.png"
     }
   }
