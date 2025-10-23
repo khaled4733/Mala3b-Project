@@ -1,7 +1,7 @@
 {
   "name": "cs303spring2022",
   "version": "1.0.0",
-  "main": "index.js",
+  "main":  "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start --web",
     "build": "expo export --platform web",
@@ -18,8 +18,8 @@
     "expo-status-bar": "~1.2.0",
     "expo-updates": "~0.11.7",
     "firebase": "^9.7.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-native": "0.64.3",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "^2.4.2",
@@ -27,7 +27,7 @@
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-searchbar": "^1.16.0",
-    "react-native-web": "^0.19.0"
+    "react-native-web": "~0.18.10"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
