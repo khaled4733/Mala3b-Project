@@ -1,7 +1,7 @@
 services:
   - type: web
     name: mala3b-frontend
-    env: static
+    runtime: static
     buildCommand: npm run build
     staticPublishPath: ./web-build
     envVars:
