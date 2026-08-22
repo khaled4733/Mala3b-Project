@@ -1,0 +1,10 @@
+node_modules/
+.expo/
+.expo-shared/
+web-build/
+dist/
+.idea/
+yarn-error.log
+.env
+.env.*
+!.env.example

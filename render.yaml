@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: mala3b-frontend
+    env: static
+    buildCommand: npm run build
+    staticPublishPath: ./web-build
+    envVars:
+      - key: NODE_VERSION
+        value: 18.20.8
+      - key: NPM_CONFIG_LEGACY_PEER_DEPS
+        value: "true"
+    buildFilter:
+      paths:
+        - "**/*"
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
